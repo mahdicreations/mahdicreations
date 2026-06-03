@@ -224,81 +224,82 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,150,12,0.06)_0%,transparent_70%)]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center z-10 relative">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 w-full z-10 relative">
           <motion.div
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-6 max-w-4xl mx-auto"
+            className="flex flex-col gap-8"
           >
             {/* Small Label */}
-            <motion.span
-              variants={heroItemVariants}
-              className="text-xs font-semibold tracking-[0.35em] text-gold uppercase"
-            >
-              Agence Web & Digitale &middot; Marrakech, Maroc
-            </motion.span>
-
-            {/* H1 Title */}
-            <motion.h1
-              variants={heroItemVariants}
-              className="font-display font-semibold text-5xl sm:text-6xl md:text-8xl leading-tight text-white"
-            >
-              Créations Web <br />
-              <span className="text-gold-gradient">d'Exception</span>
-            </motion.h1>
-
-            {/* Subheading */}
-            <motion.p
-              variants={heroItemVariants}
-              className="font-body text-base sm:text-lg md:text-xl text-text-muted max-w-3xl mx-auto leading-relaxed"
-            >
-              Création de sites web &middot; Référencement SEO &middot; Marketing Digital
-            </motion.p>
-
-            {/* Main Paragraph */}
-            <motion.p
-              variants={heroItemVariants}
-              className="font-body text-sm sm:text-base text-text-muted max-w-2xl mx-auto leading-relaxed opacity-95"
-            >
-              Mahdi Créations est votre agence web à Marrakech spécialisée dans la création de sites web professionnels, le référencement naturel sur Google et le marketing digital au Maroc.
-            </motion.p>
-
-            {/* CTA Buttons */}
             <motion.div
               variants={heroItemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
+              className="flex items-center gap-4"
             >
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="bg-gold-gradient text-dark font-body font-semibold text-base px-8 py-3.5 rounded-full shadow-lg shadow-gold/15 cursor-pointer"
-                >
-                  Demander un devis
-                </motion.button>
-              </Link>
-              <Link href="/contact?type=consultation">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="border border-gold text-gold font-body font-semibold text-base px-8 py-3.5 rounded-full hover:bg-gold/5 transition-all cursor-pointer"
-                >
-                  Consultation gratuite
-                </motion.button>
-              </Link>
+              <span className="h-px w-12 bg-gold" />
+              <span className="text-[11px] font-semibold tracking-[0.35em] text-gold uppercase">
+                Agence Web & Digitale &middot; Marrakech, Maroc
+              </span>
+            </motion.div>
+
+            {/* H1 Title - oversized editorial */}
+            <motion.h1
+              variants={heroItemVariants}
+              className="font-display font-light text-mega text-[15vw] sm:text-[13vw] lg:text-[10.5rem] text-white"
+            >
+              Créations Web
+              <br />
+              <span className="italic font-medium text-gold-gradient">d&apos;Exception</span>
+            </motion.h1>
+
+            {/* Subheading + paragraph in editorial two-column footer */}
+            <motion.div
+              variants={heroItemVariants}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-2"
+            >
+              <p className="lg:col-span-7 font-body text-base sm:text-lg text-text-muted max-w-2xl leading-relaxed">
+                Mahdi Créations est votre agence web à Marrakech spécialisée dans la création de sites web professionnels, le référencement naturel sur Google et le marketing digital au Maroc.
+              </p>
+
+              <div className="lg:col-span-5 flex flex-col sm:flex-row lg:justify-end gap-4">
+                <Link href="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full sm:w-auto bg-gold-gradient text-dark font-body font-semibold text-base px-8 py-3.5 rounded-full shadow-lg shadow-gold/15 cursor-pointer"
+                  >
+                    Demander un devis
+                  </motion.button>
+                </Link>
+                <Link href="/contact?type=consultation">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full sm:w-auto border border-gold text-gold font-body font-semibold text-base px-8 py-3.5 rounded-full hover:bg-gold/5 transition-all cursor-pointer"
+                  >
+                    Consultation gratuite
+                  </motion.button>
+                </Link>
+              </div>
             </motion.div>
 
             {/* Stats */}
             <motion.div
               variants={heroItemVariants}
-              className="mt-12 pt-8 border-t border-white/5 flex flex-wrap justify-center gap-6 md:gap-12 text-xs sm:text-sm font-body text-text-muted"
+              className="mt-8 pt-8 border-t border-white/10 grid grid-cols-3 gap-6 max-w-3xl"
             >
-              <span>200+ Sites & Applications créés</span>
-              <span className="text-gold/30">|</span>
-              <span>100% Clients satisfaits</span>
-              <span className="text-gold/30">|</span>
-              <span>15 ans d'expérience</span>
+              <div className="flex flex-col gap-1">
+                <span className="font-display text-3xl md:text-4xl text-gold">200+</span>
+                <span className="text-xs sm:text-sm font-body text-text-muted">Sites & Applications créés</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-display text-3xl md:text-4xl text-gold">100%</span>
+                <span className="text-xs sm:text-sm font-body text-text-muted">Clients satisfaits</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-display text-3xl md:text-4xl text-gold">15 ans</span>
+                <span className="text-xs sm:text-sm font-body text-text-muted">d&apos;expérience</span>
+              </div>
             </motion.div>
           </motion.div>
         </div>

@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-gold-light: #f0d080;
-  --color-gold: #c9960c;
-  --color-gold-mid: #b8860b;
-  --color-gold-deep: #8b6914;
-  --color-gold-accent: #d4a017;
-  
-  --color-dark: #0a0a0a;
-  --color-dark-section: #111111;
-  --color-dark-card: #181818;
-  
-  --color-cream: #f8f6f1;
+  /* Accent: Electric Lime (token names kept as "gold-*" so the whole site cascades) */
+  --color-gold-light: #e4ff7a;
+  --color-gold: #c3f53c;
+  --color-gold-mid: #a8e02a;
+  --color-gold-deep: #4d7c0f;
+  --color-gold-accent: #d2ff52;
 
-  --color-border-gold: rgba(201, 150, 12, 0.2);
-  --color-border-dark: rgba(255, 255, 255, 0.06);
+  /* Base: True Noir */
+  --color-dark: #080808;
+  --color-dark-section: #0e0e0c;
+  --color-dark-card: #151513;
 
-  --color-text-white: #f5f4f0;
-  --color-text-muted: #a09880;
-  --color-text-dark: #1a1a1a;
+  --color-cream: #f4f3ec;
+
+  --color-border-gold: rgba(195, 245, 60, 0.22);
+  --color-border-dark: rgba(255, 255, 255, 0.07);
+
+  --color-text-white: #f6f6f0;
+  --color-text-muted: #95958a;
+  --color-text-dark: #14140f;
 
   /* Fonts */
   --font-display: var(--font-fraunces), Georgia, serif;
@@ -27,8 +28,8 @@
 }
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #f5f4f0;
+  --background: #080808;
+  --foreground: #f6f6f0;
 }
 
 body {
@@ -45,22 +46,27 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Tighter, more elegant body tracking */
 .font-body {
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
-/* Gold Gradient Text */
+/* Editorial oversized utility for hero statements */
+.text-mega {
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+/* Accent Gradient Text */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #f0d080 0%, #c9960c 50%, #8b6914 100%);
+  background: linear-gradient(135deg, #e4ff7a 0%, #c3f53c 45%, #8fbf1f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Gold Gradient Background */
+/* Accent Gradient Background */
 .bg-gold-gradient {
-  background: linear-gradient(135deg, #f0d080 0%, #c9960c 35%, #b8860b 65%, #8b6914 100%);
+  background: linear-gradient(135deg, #e4ff7a 0%, #c3f53c 50%, #a8e02a 100%);
 }
 
 /* Noise overlay for rich texture */
@@ -76,7 +82,7 @@ body {
   right: 0;
   bottom: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.02;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 1;
 }
@@ -87,8 +93,8 @@ body {
 }
 
 .gold-glow-hover:hover {
-  box-shadow: 0 0 30px rgba(201, 150, 12, 0.12);
-  border-color: rgba(201, 150, 12, 0.4);
+  box-shadow: 0 0 32px rgba(195, 245, 60, 0.14);
+  border-color: rgba(195, 245, 60, 0.45);
 }
 
 /* Custom styles for layout and scrollbar */
@@ -97,16 +103,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #080808;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c9960c;
+  background: #c3f53c;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8860b;
+  background: #a8e02a;
 }
 
 html {
