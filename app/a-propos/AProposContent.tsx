@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, Trophy, Lightbulb, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -65,21 +66,22 @@ export function AProposContent() {
             </p>
           </AnimatedSection>
 
-          {/* Elegant placeholder layout for agency graphics */}
-          <AnimatedSection className="lg:col-span-5 bg-dark-card border border-gold/15 rounded-3xl p-8 h-96 flex flex-col justify-between relative overflow-hidden group hover:border-gold/30 transition-all duration-300">
+          {/* Elegant placeholder layout for agency graphics with a large logo */}
+          <AnimatedSection className="lg:col-span-5 bg-dark-card border border-gold/15 rounded-3xl p-8 h-[440px] flex flex-col justify-between items-center relative overflow-hidden group hover:border-gold/30 transition-all duration-300">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl" />
-            <span className="font-display text-xs font-semibold text-gold uppercase tracking-widest">
+            <span className="font-display text-xs font-semibold text-gold uppercase tracking-widest self-start">
               L'Esprit Marrakech
             </span>
-            <div className="flex flex-col gap-4">
-              <p className="font-display text-4xl md:text-5xl font-medium text-gold-light leading-tight">
-                Authenticité <br />& Innovation
-              </p>
-              <p className="font-body text-xs text-text-muted">
-                Marrakech, au croisement de la tradition impériale et du dynamisme numérique contemporain.
-              </p>
+            <div className="flex-grow flex items-center justify-center py-4 w-full">
+              <Image
+                src="/logo-transparent.png"
+                alt="Mahdi Créations"
+                width={1200}
+                height={300}
+                className="h-[300px] w-auto object-contain drop-shadow-[0_0_40px_rgba(201,150,12,0.25)] group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <div className="border-t border-white/5 pt-4 text-xs font-body text-gold flex justify-between">
+            <div className="border-t border-white/5 pt-4 text-xs font-body text-gold flex justify-between w-full">
               <span>Agence Digitale &middot; Marrakech</span>
               <span>Maroc</span>
             </div>

@@ -14,9 +14,9 @@ export function Footer() {
             <Image
               src="/logo-transparent.png"
               alt="Mahdi Créations — Agence web Marrakech"
-              width={140}
-              height={35}
-              className="h-9 w-auto object-contain"
+              width={400}
+              height={100}
+              className="h-[100px] w-auto object-contain"
             />
           </Link>
           <p className="text-text-muted text-sm font-body leading-relaxed">

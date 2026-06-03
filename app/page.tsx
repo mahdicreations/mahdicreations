@@ -157,11 +157,27 @@ const clientLogos = [
   { src: "/client-gueliz.png", alt: "Conseil de Gueliz Marrakech" },
   { src: "/client-assmann.png", alt: "Assmann" },
   { src: "/client-locevent.png", alt: "Loc-Event Maroc" },
+  { src: "/client-groupe-excel.png", alt: "Groupe Excel" },
+  { src: "/client-sahara-star-tours.png", alt: "Sahara Star Tours" },
+  { src: "/client-red-platinum-tour.png", alt: "Red Platinum Tour" },
+  { src: "/client-elhajjaji-tours.png", alt: "Elhajjaji Tours" },
+  { src: "/client-palais-chahramane.png", alt: "Palais Chahramane" },
+  { src: "/client-offerta-in-marocco.png", alt: "Offerta in Marocco" },
+  { src: "/client-riad-abqari-youssefi.png", alt: "Riad Abqari Youssefi" },
+  { src: "/client-webkech.png", alt: "Webkech" },
+  { src: "/client-sanmao-camp.png", alt: "Sanmao Desert Luxury Camp" },
+  { src: "/client-ajoudar-tour.png", alt: "Ajoudar Morocco Tour" },
+  { src: "/client-riad-anya.png", alt: "Riad Anya" },
+  { src: "/client-ennakhil-spa.png", alt: "Ennakhil Spa" },
 ];
 
 const partnerLogos = [
-  { src: "/partner-google.svg", alt: "Google" },
-  { src: "/partner-meta.svg", alt: "Meta" },
+  { src: "/partner-img1-0.png", alt: "PrestaShop" },
+  { src: "/partner-img1-1.png", alt: "AWS Partner Network" },
+  { src: "/partner-img1-2.png", alt: "Google Partner" },
+  { src: "/partner-img1-3.png", alt: "Google Cloud Partner" },
+  { src: "/partner-img2-0.png", alt: "Meta Business Partner" },
+  { src: "/partner-img2-1.png", alt: "Shopify Partners" },
   { src: "/partner-wordpress.svg", alt: "WordPress" },
   { src: "/partner-react.svg", alt: "React" },
   { src: "/partner-node.svg", alt: "Node.js" },
@@ -278,11 +294,11 @@ export default function HomePage() {
               variants={heroItemVariants}
               className="mt-12 pt-8 border-t border-white/5 flex flex-wrap justify-center gap-6 md:gap-12 text-xs sm:text-sm font-body text-text-muted"
             >
-              <span>50+ Sites créés</span>
+              <span>200+ Sites & Applications créés</span>
               <span className="text-gold/30">|</span>
               <span>100% Clients satisfaits</span>
               <span className="text-gold/30">|</span>
-              <span>5 ans d'expérience</span>
+              <span>15 ans d'expérience</span>
             </motion.div>
           </motion.div>
         </div>
@@ -303,28 +319,28 @@ export default function HomePage() {
           <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none" />
           
-          <div className="animate-marquee gap-10 flex items-center">
+          <div className="animate-marquee gap-16 flex items-center">
             {/* First list */}
             {partnerLogos.map((logo, i) => (
-              <div key={`partner-1-${i}`} className="relative h-14 w-40 flex items-center justify-center shrink-0">
+              <div key={`partner-1-${i}`} className="relative h-16 flex items-center justify-center shrink-0">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={160}
-                  height={48}
-                  className="h-11 w-auto object-contain transition-all duration-300 hover:scale-105"
+                  width={200}
+                  height={56}
+                  className="h-14 w-auto object-contain transition-all duration-300 hover:scale-105"
                 />
               </div>
             ))}
             {/* Second list for seamless loop */}
             {partnerLogos.map((logo, i) => (
-              <div key={`partner-2-${i}`} className="relative h-14 w-40 flex items-center justify-center shrink-0">
+              <div key={`partner-2-${i}`} className="relative h-16 flex items-center justify-center shrink-0">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={160}
-                  height={48}
-                  className="h-11 w-auto object-contain transition-all duration-300 hover:scale-105"
+                  width={200}
+                  height={56}
+                  className="h-14 w-auto object-contain transition-all duration-300 hover:scale-105"
                 />
               </div>
             ))}
@@ -425,19 +441,19 @@ export default function HomePage() {
               </span>
             </div>
             
-            <div className="relative w-full overflow-hidden py-4 select-none">
+            <div className="relative w-full overflow-hidden py-8 select-none bg-zinc-200 rounded-3xl border border-white/10 shadow-inner">
               {/* Left & Right gradient fades for smooth fade edges */}
-              <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
-              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-zinc-200 to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-zinc-200 to-transparent z-10 pointer-events-none" />
               
-              <div className="animate-marquee gap-14 flex items-center">
+              <div className="animate-marquee gap-18 flex items-center">
                 {/* First list */}
                 {clientLogos.map((logo, i) => (
-                  <div key={`client-1-${i}`} className="relative h-20 w-52 flex items-center justify-center shrink-0">
+                  <div key={`client-1-${i}`} className="relative h-20 flex items-center justify-center shrink-0">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={208}
+                      width={220}
                       height={64}
                       className="h-16 w-auto object-contain transition-all duration-300 hover:scale-105"
                     />
@@ -445,11 +461,11 @@ export default function HomePage() {
                 ))}
                 {/* Second list for seamless loop */}
                 {clientLogos.map((logo, i) => (
-                  <div key={`client-2-${i}`} className="relative h-20 w-52 flex items-center justify-center shrink-0">
+                  <div key={`client-2-${i}`} className="relative h-20 flex items-center justify-center shrink-0">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={208}
+                      width={220}
                       height={64}
                       className="h-16 w-auto object-contain transition-all duration-300 hover:scale-105"
                     />
