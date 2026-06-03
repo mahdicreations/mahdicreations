@@ -22,8 +22,8 @@
   --color-text-dark: #1a1a1a;
 
   /* Fonts */
-  --font-display: var(--font-cormorant), serif;
-  --font-body: var(--font-inter), sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-jakarta), system-ui, sans-serif;
 }
 
 :root {
@@ -34,7 +34,20 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display headings: refined editorial serif */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+/* Tighter, more elegant body tracking */
+.font-body {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
 /* Gold Gradient Text */
