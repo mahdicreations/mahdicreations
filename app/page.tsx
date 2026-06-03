@@ -159,6 +159,14 @@ const clientLogos = [
   { src: "/client-locevent.png", alt: "Loc-Event Maroc" },
 ];
 
+const partnerLogos = [
+  { src: "/partner-google.svg", alt: "Google" },
+  { src: "/partner-meta.svg", alt: "Meta" },
+  { src: "/partner-wordpress.svg", alt: "WordPress" },
+  { src: "/partner-react.svg", alt: "React" },
+  { src: "/partner-node.svg", alt: "Node.js" },
+];
+
 const bgImages = [
   "/hero-bg-1.png",
   "/hero-bg-2.png",
@@ -281,12 +289,12 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────
-          SECTION: PARMI NOS CLIENTS (MARQUEE)
+          SECTION: NOS PARTENAIRES (MARQUEE)
           ────────────────────────────────────── */}
       <section className="py-12 bg-dark border-b border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center mb-6">
           <span className="text-[10px] uppercase font-body font-bold tracking-[0.3em] text-text-muted/70">
-            Ils nous font confiance
+            Nos Partenaires & Technologies
           </span>
         </div>
         
@@ -295,28 +303,28 @@ export default function HomePage() {
           <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none" />
           
-          <div className="animate-marquee gap-24 flex items-center">
+          <div className="animate-marquee gap-10 flex items-center">
             {/* First list */}
-            {clientLogos.map((logo, i) => (
-              <div key={`logo-1-${i}`} className="relative h-12 w-40 flex items-center justify-center shrink-0">
+            {partnerLogos.map((logo, i) => (
+              <div key={`partner-1-${i}`} className="relative h-14 w-40 flex items-center justify-center shrink-0">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={160}
                   height={48}
-                  className="h-10 w-auto object-contain filter grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                  className="h-11 w-auto object-contain transition-all duration-300 hover:scale-105"
                 />
               </div>
             ))}
             {/* Second list for seamless loop */}
-            {clientLogos.map((logo, i) => (
-              <div key={`logo-2-${i}`} className="relative h-12 w-40 flex items-center justify-center shrink-0">
+            {partnerLogos.map((logo, i) => (
+              <div key={`partner-2-${i}`} className="relative h-14 w-40 flex items-center justify-center shrink-0">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={160}
                   height={48}
-                  className="h-10 w-auto object-contain filter grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                  className="h-11 w-auto object-contain transition-all duration-300 hover:scale-105"
                 />
               </div>
             ))}
@@ -407,6 +415,48 @@ export default function HomePage() {
                 </AnimatedSection>
               );
             })}
+          </div>
+
+          {/* Client Logos Marquee at the bottom of Why Choose Us section */}
+          <div className="mt-20 pt-16 border-t border-white/5">
+            <div className="text-center mb-8">
+              <span className="text-[11px] uppercase font-body font-bold tracking-[0.3em] text-text-muted/70">
+                Ils nous font confiance
+              </span>
+            </div>
+            
+            <div className="relative w-full overflow-hidden py-4 select-none">
+              {/* Left & Right gradient fades for smooth fade edges */}
+              <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none" />
+              
+              <div className="animate-marquee gap-14 flex items-center">
+                {/* First list */}
+                {clientLogos.map((logo, i) => (
+                  <div key={`client-1-${i}`} className="relative h-20 w-52 flex items-center justify-center shrink-0">
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={208}
+                      height={64}
+                      className="h-16 w-auto object-contain transition-all duration-300 hover:scale-105"
+                    />
+                  </div>
+                ))}
+                {/* Second list for seamless loop */}
+                {clientLogos.map((logo, i) => (
+                  <div key={`client-2-${i}`} className="relative h-20 w-52 flex items-center justify-center shrink-0">
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={208}
+                      height={64}
+                      className="h-16 w-auto object-contain transition-all duration-300 hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
