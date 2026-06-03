@@ -36,25 +36,8 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${cormorant.variable} ${inter.variable} h-full scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                const originalError = console.error;
-                console.error = function(...args) {
-                  const msg = args.join(' ');
-                  if (msg.includes('bis_skin_checked') || msg.includes('bis_register')) {
-                    return;
-                  }
-                  originalError.apply(console, args);
-                };
-              }
-            `
-          }}
-        />
-      </head>
       <body
         className="min-h-full flex flex-col bg-dark text-text-white font-body selection:bg-gold selection:text-dark"
         suppressHydrationWarning
