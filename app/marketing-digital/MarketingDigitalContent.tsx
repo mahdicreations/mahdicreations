@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Megaphone, Landmark, Mail, Share2, Layers, CheckCircle2, ArrowRight } from "lucide-react";
+import { Megaphone, Mail, Share2, Layers, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 

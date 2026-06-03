@@ -28,7 +28,7 @@ export function CallBackForm() {
     },
   });
 
-  const onSubmit = async (data: CallBackInput) => {
+  const onSubmit = async () => {
     setIsSubmitting(true);
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1500));

@@ -32,7 +32,7 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = async (data: ContactFormInput) => {
+  const onSubmit = async () => {
     setIsSubmitting(true);
     // Simulate API request delay
     await new Promise((resolve) => setTimeout(resolve, 1500));

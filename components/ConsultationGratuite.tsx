@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { Check } from "lucide-react";
-import { motion } from "framer-motion";
 import { AnimatedSection } from "./AnimatedSection";
 
 import { CallBackForm } from "./CallBackForm";

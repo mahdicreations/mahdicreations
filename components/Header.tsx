@@ -41,11 +41,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on path change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
   const isActive = (href: string) => {
     if (href === "/") {
       return pathname === "/";
@@ -134,6 +129,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setIsOpen(false)}
                   className={`text-base font-body py-2 hover:text-gold border-b border-white/5 transition-colors ${
                     isActive(link.href) ? "text-gold font-medium" : "text-text-muted"
                   }`}
@@ -142,7 +138,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-4">
-                <Link href="/contact">
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <button className="w-full bg-gold-gradient text-dark font-body font-semibold text-base py-3 rounded-full shadow-lg">
                     Demander un devis
                   </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Search, BarChart3, Edit3, Settings, Trophy, ShieldAlert, ArrowRight } from "lucide-react";
+import { Search, BarChart3, Edit3, Settings, Trophy, ShieldAlert } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
