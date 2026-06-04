@@ -14,6 +14,7 @@ interface CallBackInput {
 export function CallBackForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -30,11 +31,31 @@ export function CallBackForm() {
 
   const onSubmit = async (data: CallBackInput) => {
     setIsSubmitting(true);
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    reset();
+    setSubmitError(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "callback",
+          ...data,
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || "Une erreur est survenue lors de l'envoi.");
+      }
+
+      setIsSuccess(true);
+      reset();
+    } catch (err: any) {
+      setSubmitError(err.message || "Impossible de planifier l'appel.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -157,6 +178,13 @@ export function CallBackForm() {
             <span className="text-[10px] text-red-700 font-medium">{errors.callDate.message}</span>
           )}
         </div>
+
+        {/* Error Message */}
+        {submitError && (
+          <div className="text-xs text-red-700 bg-red-100 border border-red-200 rounded-xl p-3 text-center font-medium">
+            {submitError}
+          </div>
+        )}
 
         {/* Submit */}
         <motion.button

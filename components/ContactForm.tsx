@@ -16,6 +16,7 @@ interface ContactFormInput {
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -34,11 +35,31 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormInput) => {
     setIsSubmitting(true);
-    // Simulate API request delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    reset();
+    setSubmitError(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "contact",
+          ...data,
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || "Une erreur est survenue lors de l'envoi.");
+      }
+
+      setIsSuccess(true);
+      reset();
+    } catch (err: any) {
+      setSubmitError(err.message || "Impossible d'envoyer votre message pour le moment.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -202,6 +223,13 @@ export function ContactForm() {
           <span className="text-xs text-red-400">{errors.message.message}</span>
         )}
       </div>
+
+      {/* Error Message */}
+      {submitError && (
+        <div className="text-sm text-red-400 bg-red-950/20 border border-red-500/30 rounded-xl p-3 text-center">
+          {submitError}
+        </div>
+      )}
 
       {/* Submit Button */}
       <motion.button
