@@ -55,11 +55,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 border-b ${
-        scrolled
+      className={`sticky top-0 z-50 transition-all duration-300 border-b ${scrolled
           ? "bg-dark/95 backdrop-blur-md border-gold/15 py-3"
           : "bg-dark border-gold/10 py-5"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex items-center justify-between">
         {/* Logo Left */}
@@ -80,9 +79,8 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-body transition-colors relative py-1 hover:text-gold ${
-                isActive(link.href) ? "text-gold font-medium" : "text-text-muted"
-              }`}
+              className={`text-sm font-body transition-colors relative py-1 hover:text-gold ${isActive(link.href) ? "text-gold font-medium" : "text-text-muted"
+                }`}
             >
               {link.label}
               {isActive(link.href) && (
@@ -134,9 +132,8 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-base font-body py-2 hover:text-gold border-b border-white/5 transition-colors ${
-                    isActive(link.href) ? "text-gold font-medium" : "text-text-muted"
-                  }`}
+                  className={`text-base font-body py-2 hover:text-gold border-b border-white/5 transition-colors ${isActive(link.href) ? "text-gold font-medium" : "text-text-muted"
+                    }`}
                 >
                   {link.label}
                 </Link>
