@@ -46,6 +46,42 @@ const projects = [
     desc: "Logotype élégant et identité visuelle épurée pour un cabinet dentaire moderne dans le quartier de Guéliz.",
     image: "/project-dental.png",
   },
+  {
+    title: "Kech Law Firm",
+    category: "Site Vitrine & Dynamique",
+    desc: "Site web professionnel pour un cabinet d'avocats international basé à Marrakech, axé sur l'élégance et la crédibilité.",
+    image: "/project-law.png",
+  },
+  {
+    title: "Bab Atlas Spa",
+    category: "Identité Visuelle",
+    desc: "Identité visuelle de prestige, logotype de luxe et packaging de produits de soin pour un spa haut de gamme à Marrakech.",
+    image: "/project-spa.png",
+  },
+  {
+    title: "Aya Chic Boutique",
+    category: "E-commerce",
+    desc: "Boutique en ligne moderne de prêt-à-porter de créateurs marocains, optimisée pour mobile et conversion.",
+    image: "/project-boutique.png",
+  },
+  {
+    title: "Medina Culinary",
+    category: "Site Vitrine & Dynamique",
+    desc: "Site vitrine et dynamique interactif pour une prestigieuse école de cuisine marocaine avec réservation en ligne.",
+    image: "/project-culinary.png",
+  },
+  {
+    title: "Dar Zellige",
+    category: "Identité Visuelle",
+    desc: "Branding, papeterie de luxe et charte éditoriale pour un showroom d'artisanat d'art et de zelliges haut de gamme.",
+    image: "/project-zellige.png",
+  },
+  {
+    title: "Marrakech Auto Rental",
+    category: "E-commerce",
+    desc: "Plateforme de réservation et location de voitures de luxe à Marrakech avec paiement en ligne sécurisé.",
+    image: "/project-rental.png",
+  },
 ];
 
 export function RealisationsContent() {
@@ -67,7 +103,7 @@ export function RealisationsContent() {
               Notre Portfolio
             </span>
             <h1 className="font-display font-semibold text-5xl md:text-7xl text-white">
-              Nos <span className="text-gold-gradient">Réalisations</span>
+              Parmi nos <span className="text-gold-gradient">réalisations</span>
             </h1>
             <p className="font-body text-base md:text-lg text-text-muted max-w-2xl mx-auto leading-relaxed mt-2">
               Découvrez nos récents projets web et design. Des solutions raffinées conçues avec précision pour nos clients au Maroc et ailleurs.
