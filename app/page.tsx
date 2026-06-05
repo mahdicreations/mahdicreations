@@ -16,6 +16,8 @@ import {
   UserCheck,
   Star,
   ArrowRight,
+  Server,
+  Wrench,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -80,6 +82,18 @@ const services = [
     title: "Marketing Digital",
     description: "Stratégie digitale d'acquisition, campagnes publicitaires ciblées (Google Ads, Meta Ads) et animation des réseaux sociaux.",
     href: "/marketing-digital",
+  },
+  {
+    icon: Server,
+    title: "Hébergement Web & Domaines",
+    description: "Hébergement web sécurisé haute performance au Maroc sur serveurs SSD NVMe, certificats SSL gratuits et gestion de vos noms de domaine .ma ou .com.",
+    href: "/services",
+  },
+  {
+    icon: Wrench,
+    title: "Maintenance & Support Web",
+    description: "Maintenance technique, mises à jour de sécurité régulières, sauvegardes automatiques et correction de bugs rapide pour vos sites web à Marrakech et au Maroc.",
+    href: "/services",
   },
 ];
 
@@ -345,6 +359,53 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────
+          SECTION 1.5: VALUE PROPOSITION
+          ────────────────────────────────────── */}
+      <section className="py-16 bg-dark relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(201,150,12,0.08)_0%,transparent_60%)] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+          <AnimatedSection className="bg-dark-card border border-gold/20 rounded-3xl p-6 md:p-10 lg:p-12 shadow-2xl shadow-gold/5 relative overflow-hidden group flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            {/* Subtle inner glow that reacts to hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-gold/[0.03] to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            
+            {/* Left Column: Title & Icon */}
+            <div className="relative z-10 flex-shrink-0 lg:w-2/5 flex flex-col items-center lg:items-start text-center lg:text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-gold/10 text-gold rounded-full p-2.5 shadow-[0_0_20px_rgba(201,150,12,0.2)]">
+                  <Sparkles size={20} />
+                </div>
+                <span className="text-[10px] uppercase font-body font-bold tracking-[0.2em] text-gold-light">
+                  Notre Vision
+                </span>
+              </div>
+              
+              <h2 className="font-display font-semibold text-3xl md:text-4xl text-white leading-tight">
+                Avoir un site web <br className="hidden lg:block" />
+                <span className="text-gold-gradient">ne suffit plus.</span>
+              </h2>
+            </div>
+            
+            {/* Vertical/Horizontal Divider */}
+            <div className="hidden lg:block w-px h-24 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
+            <div className="block lg:hidden h-px w-full max-w-xs bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+            
+            {/* Right Column: Text */}
+            <div className="relative z-10 lg:w-3/5 flex flex-col gap-4 text-center lg:text-left">
+              <p className="font-body text-base md:text-lg text-text-muted leading-relaxed">
+                Nous concevons pour vous une plateforme performante, <strong className="text-text-white font-medium">100% responsive</strong> (adaptée à tous les écrans) et <strong className="text-text-white font-medium">ultra-optimisée pour le SEO</strong>.
+              </p>
+              
+              <p className="font-body text-base md:text-lg text-gold-light leading-relaxed font-medium">
+                Notre véritable objectif ? Vous rendre visible sur Google, offrir une expérience fluide à vos visiteurs, et les <span className="text-white">transformer en clients</span>.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

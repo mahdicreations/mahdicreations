@@ -10,6 +10,8 @@ import {
   TrendingUp,
   CheckCircle,
   ArrowRight,
+  Server,
+  Wrench,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -92,6 +94,36 @@ const serviceDetails = [
     ],
     process: ["Définition objectifs", "Création des visuels/textes", "Lancement & A/B testing", "Optimisations"],
     href: "/marketing-digital",
+  },
+  {
+    icon: Server,
+    title: "Hébergement Web & Noms de Domaine",
+    desc: "Bénéficiez d'un hébergement web sécurisé de haute performance au Maroc et réservez vos noms de domaine (.ma, .com...). Nos solutions reposent sur des serveurs SSD NVMe ultra-rapides, incluent des certificats SSL gratuits (HTTPS) et garantissent un taux de disponibilité maximal pour votre site internet.",
+    benefits: [
+      "Serveurs cloud SSD NVMe ultra-rapides",
+      "Certificats SSL Let's Encrypt gratuits",
+      "Enregistrement et transfert de domaines (.ma, .com...)",
+      "Sauvegarde automatique quotidienne de vos données",
+      "Configuration de boîtes e-mails professionnelles",
+      "Optimisation pour WordPress, Next.js et applications custom",
+    ],
+    process: ["Choix du domaine", "Configuration DNS", "Déploiement SSL", "Mise en service"],
+    href: "/contact",
+  },
+  {
+    icon: Wrench,
+    title: "Maintenance & Support Site Web",
+    desc: "Assurez la pérennité, la sécurité et la rapidité de vos plateformes en ligne. Notre service de maintenance de site web à Marrakech et au Maroc comprend la correction rapide des bugs, les mises à jour régulières de sécurité (antivirus, pare-feu), et l'optimisation continue des performances techniques.",
+    benefits: [
+      "Mises à jour régulières des thèmes, plugins & frameworks",
+      "Sauvegardes externes quotidiennes et restauration rapide",
+      "Monitoring de sécurité et détection de logiciels malveillants",
+      "Support technique prioritaire par téléphone et e-mail",
+      "Optimisation de la vitesse et correction des bugs",
+      "Rapports mensuels détaillés sur l'état de votre site",
+    ],
+    process: ["Audit de l'existant", "Monitoring 24/7", "Mises à jour régulières", "Rapport mensuel"],
+    href: "/contact",
   },
 ];
 

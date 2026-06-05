@@ -126,6 +126,16 @@ export function Footer() {
                 Marketing Digital & Pub
               </Link>
             </li>
+            <li>
+              <Link href="/services" className="hover:text-gold transition-colors">
+                Hébergement Web & Domaines
+              </Link>
+            </li>
+            <li>
+              <Link href="/services" className="hover:text-gold transition-colors">
+                Maintenance & Support Web
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -151,6 +161,11 @@ export function Footer() {
             <li>
               <Link href="/faq" className="hover:text-gold transition-colors">
                 Questions Fréquentes (FAQ)
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className="hover:text-gold transition-colors">
+                Blog & Actualités
               </Link>
             </li>
             <li>
