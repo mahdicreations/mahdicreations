@@ -18,11 +18,14 @@ import {
   ArrowRight,
   Server,
   Wrench,
+  Calendar,
+  Clock,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ConsultationGratuite } from "@/components/ConsultationGratuite";
+import { blogArticles } from "./blog/data";
 
 // Hero entrance animations
 const heroContainerVariants = {
@@ -205,6 +208,7 @@ const bgImages = [
 
 export default function HomePage() {
   const [currentBg, setCurrentBg] = useState(0);
+  const latestArticles = blogArticles.slice(0, 4);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -779,6 +783,101 @@ export default function HomePage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────
+          SECTION 8.5: DERNIERS ARTICLES BLOG
+          ────────────────────────────────────── */}
+      <section className="py-24 bg-dark relative overflow-hidden">
+        {/* Decorative background glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(201,150,12,0.05)_0%,transparent_60%)] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+          <AnimatedSection className="text-center mb-16 flex flex-col gap-3 max-w-3xl mx-auto">
+            <span className="text-xs uppercase font-body font-semibold tracking-wider text-gold">
+              Notre Blog
+            </span>
+            <h2 className="font-display font-medium text-3xl md:text-5xl text-white">
+              Dernières actualités & conseils
+            </h2>
+            <p className="font-body text-base text-text-muted mt-2">
+              Découvrez nos derniers articles pour tout savoir sur la création de sites web, le référencement SEO et le marketing digital au Maroc.
+            </p>
+          </AnimatedSection>
+
+          {/* Grid/Carousel layout - horizontal scroll on mobile, 4-column grid on desktop */}
+          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory no-scrollbar lg:grid lg:grid-cols-4 lg:overflow-x-visible lg:pb-0">
+            {latestArticles.map((article, idx) => (
+              <AnimatedSection
+                key={article.slug}
+                delay={idx * 0.1}
+                className="bg-dark-card border border-white/5 rounded-3xl overflow-hidden group hover:border-gold/30 transition-all duration-300 flex flex-col h-full shadow-lg min-w-[280px] sm:min-w-[320px] lg:min-w-0 snap-start"
+              >
+                {/* Article Image */}
+                <div className="h-44 sm:h-48 relative overflow-hidden bg-dark">
+                  <Image
+                    src={article.heroImage}
+                    alt={article.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85" />
+                  <div className="absolute top-4 left-6">
+                    <span className="bg-gold/90 text-dark text-[9px] font-body font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                      {article.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-5 flex flex-col gap-3 flex-grow justify-between">
+                  <div>
+                    {/* Date & Read Time */}
+                    <div className="flex items-center gap-3 text-[10px] text-text-muted font-body mb-2">
+                      <span className="flex items-center gap-1">
+                        <Calendar size={11} className="text-gold/60" />
+                        {article.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock size={11} className="text-gold/60" />
+                        {article.readTime}
+                      </span>
+                    </div>
+
+                    <h3 className="font-display font-medium text-base text-text-white group-hover:text-gold transition-colors duration-300 leading-snug line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="font-body text-[11px] text-text-muted leading-relaxed mt-2 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                  </div>
+                  <div className="border-t border-white/5 pt-3 mt-4">
+                    <Link href={`/blog/${article.slug}`}>
+                      <span className="font-body text-[11px] font-semibold text-gold group-hover:text-gold-light flex items-center gap-1 group-hover:underline cursor-pointer">
+                        Lire l&apos;article
+                        <ArrowRight size={12} className="transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {/* Button below */}
+          <AnimatedSection className="text-center mt-12">
+            <Link href="/blog">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="border border-gold text-gold font-body font-semibold text-sm px-8 py-3.5 rounded-full hover:bg-gold/5 transition-all cursor-pointer inline-flex items-center gap-2"
+              >
+                Voir tous les articles
+                <ArrowRight size={16} />
+              </motion.button>
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
 
