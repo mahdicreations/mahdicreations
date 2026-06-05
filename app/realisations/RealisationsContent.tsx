@@ -7,7 +7,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-const categories = ["Tous", "Site Vitrine & Dynamique", "E-commerce", "Identité Visuelle"];
+const categories = ["Tous", "Site Vitrine & Dynamique", "E-commerce", "Application Web", "Identité Visuelle"];
 
 const projects = [
   {
@@ -81,6 +81,42 @@ const projects = [
     category: "E-commerce",
     desc: "Plateforme de réservation et location de voitures de luxe à Marrakech avec paiement en ligne sécurisé.",
     image: "/project-rental.png",
+  },
+  {
+    title: "Kech Marketplace",
+    category: "Application Web",
+    desc: "Plateforme B2B/B2C d'artisanat marocain avec gestion logistique internationale et suivi des commandes.",
+    image: "/project-marketplace.png",
+  },
+  {
+    title: "Riad Management SaaS",
+    category: "Application Web",
+    desc: "Application SaaS de gestion hôtelière complète (PMS), Channel Manager et facturation automatique pour les Riads.",
+    image: "/project-rms.png",
+  },
+  {
+    title: "Atlas Tour Operator",
+    category: "Application Web",
+    desc: "Système ERP sur mesure pour voyagistes, intégrant la gestion des circuits, des guides et des réservations de transports.",
+    image: "/project-tours.png",
+  },
+  {
+    title: "Marrakech Food Delivery",
+    category: "Application Web",
+    desc: "Application web progressive (PWA) de commande de repas gastronomiques avec géolocalisation et suivi en temps réel.",
+    image: "/project-delivery.png",
+  },
+  {
+    title: "Kech Space Co-working",
+    category: "Application Web",
+    desc: "Portail de réservation d'espaces de travail collaboratifs, gestion des abonnements et accès automatisés.",
+    image: "/project-coworking.png",
+  },
+  {
+    title: "Morocco Clinique Portal",
+    category: "Application Web",
+    desc: "Portail médical sécurisé pour la prise de rendez-vous en ligne, dossiers patients et téléconsultations.",
+    image: "/project-clinique.png",
   },
 ];
 
