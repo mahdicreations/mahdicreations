@@ -186,14 +186,14 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Mail size={18} className="text-gold shrink-0" />
-              <a href="mailto:contact@mahdicreations.com" className="hover:text-gold transition-colors">
-                contact@mahdicreations.com
+              <a href="mailto:mahdicreation.group@gmail.com" className="hover:text-gold transition-colors">
+                mahdicreation.group@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={18} className="text-gold shrink-0" />
-              <a href="tel:+212600000000" className="hover:text-gold transition-colors">
-                +212 (0) 6 00 00 00 00
+              <a href="tel:+212674747589" className="hover:text-gold transition-colors">
+                +212 (0) 6 74 74 75 89
               </a>
             </li>
           </ul>

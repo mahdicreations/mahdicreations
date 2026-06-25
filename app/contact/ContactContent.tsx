@@ -68,14 +68,14 @@ export function ContactContent() {
                 {
                   icon: Mail,
                   title: "Adresse Email",
-                  value: "contact@mahdicreations.com",
-                  href: "mailto:contact@mahdicreations.com",
+                  value: "mahdicreation.group@gmail.com",
+                  href: "mailto:mahdicreation.group@gmail.com",
                 },
                 {
                   icon: Phone,
                   title: "Téléphone direct",
-                  value: "+212 (0) 6 00 00 00 00",
-                  href: "tel:+212600000000",
+                  value: "+212 (0) 6 74 74 75 89",
+                  href: "tel:+212674747589",
                 },
               ].map((item, idx) => {
                 const Icon = item.icon;

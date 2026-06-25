@@ -49,7 +49,7 @@ export default function PrivacyPage() {
 
             <h2 className="font-display text-xl text-text-white font-medium mt-4">5. Vos Droits</h2>
             <p>
-              Conformément à la loi marocaine n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition aux informations vous concernant, que vous pouvez exercer en nous contactant par e-mail à : <a href="mailto:contact@mahdicreations.com" className="text-gold hover:underline">contact@mahdicreations.com</a>.
+              Conformément à la loi marocaine n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition aux informations vous concernant, que vous pouvez exercer en nous contactant par e-mail à : <a href="mailto:mahdicreation.group@gmail.com" className="text-gold hover:underline">mahdicreation.group@gmail.com</a>.
             </p>
           </div>
         </AnimatedSection>

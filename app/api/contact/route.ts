@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const smtpFrom = process.env.SMTP_FROM || `"Mahdi Créations" <${smtpUser || "no-reply@mahdicreations.com"}>`;
-    const contactReceiver = process.env.CONTACT_RECEIVER || "javarx@gmail.com";
+    const contactReceiver = process.env.CONTACT_RECEIVER || "mahdicreation.group@gmail.com";
 
     // Format the email content
     let subject = "";
