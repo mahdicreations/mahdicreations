@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   Monitor,
@@ -98,31 +99,27 @@ const serviceDetails = [
   {
     icon: Server,
     title: "Hébergement Web & Noms de Domaine",
-    desc: "Bénéficiez d'un hébergement web sécurisé de haute performance au Maroc et réservez vos noms de domaine (.ma, .com...). Nos solutions reposent sur des serveurs SSD NVMe ultra-rapides, incluent des certificats SSL gratuits (HTTPS) et garantissent un taux de disponibilité maximal pour votre site internet.",
+    desc: "Hébergement ultra-performant et gestion complète de votre portefeuille de noms de domaine pour garantir une présence en ligne ininterrompue.",
     benefits: [
-      "Serveurs cloud SSD NVMe ultra-rapides",
-      "Certificats SSL Let's Encrypt gratuits",
-      "Enregistrement et transfert de domaines (.ma, .com...)",
-      "Sauvegarde automatique quotidienne de vos données",
-      "Configuration de boîtes e-mails professionnelles",
-      "Optimisation pour WordPress, Next.js et applications custom",
+      "Serveurs SSD NVMe haute performance au Maroc et en Europe",
+      "Enregistrement de domaine en .ma, .com, .net, etc.",
+      "Certificats SSL gratuits et gestion DNS",
+      "Espaces de stockage redondés",
     ],
-    process: ["Choix du domaine", "Configuration DNS", "Déploiement SSL", "Mise en service"],
+    process: ["Choix du serveur", "Réservation de domaine", "Configuration", "Mise en ligne"],
     href: "/contact",
   },
   {
     icon: Wrench,
-    title: "Maintenance & Support Site Web",
-    desc: "Assurez la pérennité, la sécurité et la rapidité de vos plateformes en ligne. Notre service de maintenance de site web à Marrakech et au Maroc comprend la correction rapide des bugs, les mises à jour régulières de sécurité (antivirus, pare-feu), et l'optimisation continue des performances techniques.",
+    title: "Maintenance & Support Web",
+    desc: "Des contrats de maintenance personnalisés pour assurer la pérennité, la sécurité et la mise à jour constante de vos outils digitaux.",
     benefits: [
-      "Mises à jour régulières des thèmes, plugins & frameworks",
-      "Sauvegardes externes quotidiennes et restauration rapide",
-      "Monitoring de sécurité et détection de logiciels malveillants",
-      "Support technique prioritaire par téléphone et e-mail",
-      "Optimisation de la vitesse et correction des bugs",
-      "Rapports mensuels détaillés sur l'état de votre site",
+      "Mises à jour de sécurité régulières",
+      "Sauvegardes quotidiennes externalisées",
+      "Interventions correctives rapides",
+      "Monitoring 24/7 des performances",
     ],
-    process: ["Audit de l'existant", "Monitoring 24/7", "Mises à jour régulières", "Rapport mensuel"],
+    process: ["Audit initial", "Définition du SLA", "Mise en place outils", "Support continu"],
     href: "/contact",
   },
 ];
@@ -131,18 +128,28 @@ export function ServicesContent() {
   return (
     <div className="bg-dark text-text-white">
       {/* Header Banner */}
-      <section className="relative py-24 bg-dark-section border-b border-white/5 noise-overlay">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,150,12,0.05)_0%,transparent_60%)] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10">
+      <section className="relative min-h-[50vh] flex items-center justify-center border-b border-white/5 noise-overlay">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero-bg-2.png"
+            alt="Nos services web et digitaux"
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/40" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,150,12,0.08)_0%,transparent_60%)] pointer-events-none" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10 py-24">
           <AnimatedSection className="flex flex-col gap-4">
-            <span className="text-xs uppercase font-body font-semibold tracking-[0.2em] text-gold">
-              Notre Expertise
+            <span className="text-xs uppercase font-body font-semibold tracking-[0.2em] text-gold drop-shadow-sm">
+              Expertise & Solutions
             </span>
-            <h1 className="font-display font-semibold text-5xl md:text-7xl text-white">
-              Nos Services Web & <span className="text-gold-gradient">Digitaux</span>
+            <h1 className="font-display font-semibold text-5xl md:text-7xl text-white drop-shadow-md">
+              Nos <span className="text-gold-gradient">Services</span>
             </h1>
-            <p className="font-body text-base md:text-lg text-text-muted max-w-2xl mx-auto leading-relaxed mt-2">
-              Nous mettons à votre service le meilleur du design et du développement technologique pour accélérer la croissance de votre entreprise au Maroc.
+            <p className="font-body text-base md:text-lg text-text-white max-w-3xl mx-auto leading-relaxed mt-2 drop-shadow">
+              Nous offrons une gamme complète de services digitaux haut de gamme pour propulser votre entreprise, accroître votre visibilité et développer votre chiffre d'affaires.
             </p>
           </AnimatedSection>
         </div>

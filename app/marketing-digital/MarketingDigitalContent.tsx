@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Megaphone, Landmark, Mail, Share2, Layers, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -36,17 +37,27 @@ export function MarketingDigitalContent() {
   return (
     <div className="bg-dark text-text-white">
       {/* Header Banner */}
-      <section className="relative py-24 bg-dark-section border-b border-white/5 noise-overlay">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,150,12,0.05)_0%,transparent_60%)] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10">
+      <section className="relative min-h-[50vh] flex items-center justify-center border-b border-white/5 noise-overlay">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/blog-hero-ads.png"
+            alt="Agence Marketing Digital à Marrakech"
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/40" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,150,12,0.08)_0%,transparent_60%)] pointer-events-none" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10 py-24">
           <AnimatedSection className="flex flex-col gap-4">
-            <span className="text-xs uppercase font-body font-semibold tracking-[0.2em] text-gold">
+            <span className="text-xs uppercase font-body font-semibold tracking-[0.2em] text-gold drop-shadow-sm">
               Acquisition & Branding
             </span>
-            <h1 className="font-display font-semibold text-5xl md:text-7xl text-white">
+            <h1 className="font-display font-semibold text-5xl md:text-7xl text-white drop-shadow-md">
               Agence Marketing <span className="text-gold-gradient">Digital</span> à Marrakech
             </h1>
-            <p className="font-body text-base md:text-lg text-text-muted max-w-3xl mx-auto leading-relaxed mt-2">
+            <p className="font-body text-base md:text-lg text-text-white max-w-3xl mx-auto leading-relaxed mt-2 drop-shadow">
               Développez votre visibilité et augmentez vos ventes au Maroc grâce à une stratégie d'acquisition multicanale performante et sur mesure.
             </p>
           </AnimatedSection>
