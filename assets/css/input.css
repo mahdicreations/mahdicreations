@@ -117,6 +117,14 @@ main {
   transform: translateY(0);
 }
 
+/* ── Hero Sections (Always Visible Immediately, Zero Layout Shift) ── */
+section:first-of-type h1,
+section:first-of-type .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
 /* ── Hero Slideshow ── */
 .hero-slide {
   position: absolute;

@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
         },
-        { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+        { threshold: 0.02, rootMargin: '0px 0px 60px 0px' }
       );
 
       reveals.forEach((el) => {
-        // If element is already in initial viewport, reveal immediately
+        // Immediately reveal any element in or near initial viewport
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
+        if (rect.top <= window.innerHeight + 50) {
           el.classList.add('is-visible');
         } else {
           observer.observe(el);
