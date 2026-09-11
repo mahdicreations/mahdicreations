@@ -323,4 +323,38 @@ document.addEventListener('DOMContentLoaded', () => {
   if (copyrightYear) {
     copyrightYear.textContent = new Date().getFullYear();
   }
+
+  // ── 9. Hero Background Slideshow (Deferred Loading) ──
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  if (heroSlides.length > 1) {
+    let currentSlide = 0;
+    const isMobile = window.innerWidth < 640;
+    const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024;
+
+    const getAppropriateBg = (slide) => {
+      if (isMobile && slide.dataset.bgMobile) return slide.dataset.bgMobile;
+      if (isTablet && slide.dataset.bgTablet) return slide.dataset.bgTablet;
+      return slide.dataset.bg || '';
+    };
+
+    const nextHeroSlide = () => {
+      const nextIndex = (currentSlide + 1) % heroSlides.length;
+      const nextSlide = heroSlides[nextIndex];
+      const bg = getAppropriateBg(nextSlide);
+
+      if (bg && !nextSlide.style.backgroundImage) {
+        nextSlide.style.backgroundImage = `url('${bg}')`;
+      }
+
+      heroSlides[currentSlide].classList.remove('active');
+      nextSlide.classList.add('active');
+      currentSlide = nextIndex;
+    };
+
+    // Defer rotation start by 8 seconds so it never competes with initial load
+    setTimeout(() => {
+      setInterval(nextHeroSlide, 8000);
+    }, 4000);
+  }
 });
+

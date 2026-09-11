@@ -2011,6 +2011,22 @@ main {
   opacity: 0.35;
 }
 
+.hero-slide-1 {
+  background-image: url('/assets/images/hero-bg-1-480.webp');
+}
+
+@media (min-width: 640px) {
+  .hero-slide-1 {
+    background-image: url('/assets/images/hero-bg-1-768.webp');
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-slide-1 {
+    background-image: url('/assets/images/hero-bg-1.webp');
+  }
+}
+
 /* ── Focus Visible ── */
 
 *:focus-visible {
