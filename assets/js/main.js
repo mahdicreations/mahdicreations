@@ -17,18 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
         },
-        { threshold: 0.02, rootMargin: '0px 0px 60px 0px' }
+        { threshold: 0.02, rootMargin: '0px 0px 80px 0px' }
       );
 
-      reveals.forEach((el) => {
-        // Immediately reveal any element in or near initial viewport
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight + 50) {
-          el.classList.add('is-visible');
-        } else {
-          observer.observe(el);
-        }
-      });
+      reveals.forEach((el) => observer.observe(el));
     } else {
       reveals.forEach((el) => el.classList.add('is-visible'));
     }

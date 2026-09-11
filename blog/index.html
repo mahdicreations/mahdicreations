@@ -8,7 +8,10 @@
   <meta name="description" content="Guides, conseils et actualités sur la création de sites web, le référencement SEO et le marketing digital au Maroc par Mahdi Créations, agence web Marrakech.">
   <link rel="canonical" href="https://mahdicreations.dev/blog">
   <meta name="robots" content="index, follow">
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Blog Web, SEO & Marketing Digital au Maroc | Mahdi Créations">
@@ -29,21 +32,48 @@
 
   
 
-  <!-- Google Fonts -->
+  <!-- Fonts: Preconnect, Critical WOFF2 Preload & Async Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  </noscript>
 
   <!-- Tailwind CSS -->
   <link rel="stylesheet" href="/assets/css/style.css?v=3">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EY4LVT535S"></script>
+  <!-- Google Analytics (Deferred to Idle after Window Load) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-EY4LVT535S');
+
+    function loadGtag() {
+      if (window._gtagLoaded) return;
+      window._gtagLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EY4LVT535S';
+      document.head.appendChild(s);
+    }
+
+    function scheduleGtag() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtag, { timeout: 2000 });
+      } else {
+        setTimeout(loadGtag, 1000);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      scheduleGtag();
+    } else {
+      window.addEventListener('load', scheduleGtag, { once: true });
+    }
   </script>
 <script type="application/ld+json">
 {
@@ -80,13 +110,14 @@
   <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center">
-      <picture><source type="image/webp" srcset="/assets/images/logo-transparent.webp"><img
-        src="/assets/images/logo-transparent.png"
+      <picture><source type="image/webp" srcset="/assets/images/logo-transparent-128.webp 128w, /assets/images/logo-transparent-256.webp 256w" sizes="106px"><img
+        src="/assets/images/logo-transparent-128.webp"
         alt="Mahdi Créations — Agence web Marrakech"
-        width="360" height="90"
+        width="106" height="90"
         class="h-[90px] w-auto object-contain"
         loading="eager"
         fetchpriority="high"
+        decoding="async"
       ></picture>
     </a>
 
@@ -326,7 +357,7 @@
     <!-- Col 1: Logo + Description + Socials -->
     <div class="flex flex-col gap-6">
       <a href="/">
-        <picture><source type="image/webp" srcset="/assets/images/logo-transparent.webp"><img src="/assets/images/logo-transparent.png" alt="Mahdi Créations — Agence web Marrakech" width="400" height="100" class="h-[100px] w-auto object-contain" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="/assets/images/logo-transparent-128.webp 128w, /assets/images/logo-transparent-256.webp 256w" sizes="118px"><img src="/assets/images/logo-transparent-128.webp" alt="Mahdi Créations — Agence web Marrakech" width="118" height="100" class="h-[100px] w-auto object-contain" loading="lazy" decoding="async"></picture>
       </a>
       <p class="text-text-muted text-sm font-body leading-relaxed">
         Mahdi Créations est une agence web et marketing digital de premier plan à Marrakech. Nous créons des expériences digitales de luxe, alliant design raffiné et performances techniques d'exception.
