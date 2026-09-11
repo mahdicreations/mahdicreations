@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 – Page Introuvable | Mahdi Créations</title>
   <meta name="description" content="La page que vous recherchez est introuvable. Retournez à l'accueil de Mahdi Créations, agence web à Marrakech.">
-  <link rel="canonical" href="https://mahdicreations.dev/404">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" href="/favicon.ico">
 
   <!-- Open Graph -->
   <meta property="og:title" content="404 – Page Introuvable | Mahdi Créations">
   <meta property="og:description" content="La page que vous recherchez est introuvable. Retournez à l'accueil de Mahdi Créations, agence web à Marrakech.">
-  <meta property="og:url" content="https://mahdicreations.dev/404">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://mahdicreations.dev/assets/images/logo.png">
+  <meta property="og:image" content="https://mahdicreations.dev/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="fr_MA">
   <meta property="og:site_name" content="Mahdi Créations">
 
@@ -23,9 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="404 – Page Introuvable | Mahdi Créations">
   <meta name="twitter:description" content="La page que vous recherchez est introuvable. Retournez à l'accueil de Mahdi Créations, agence web à Marrakech.">
-  <meta name="twitter:image" content="https://mahdicreations.dev/assets/images/logo.png">
-
-  <meta name="robots" content="noindex, follow">
+  <meta name="twitter:image" content="https://mahdicreations.dev/assets/images/og-image.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,13 +121,36 @@
       <h1 class="font-display font-semibold text-4xl md:text-6xl text-white">Oups ! Cette page n'existe pas</h1>
       <p class="font-body text-base text-text-muted max-w-lg leading-relaxed mx-auto">La page que vous recherchez a été déplacée, supprimée ou n'a jamais existé. Retournez à l'accueil pour continuer votre navigation.</p>
     </div>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
       <a href="/" class="bg-gold-gradient text-dark font-body font-semibold text-base px-8 py-3.5 rounded-full shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform inline-block">
         Retour à l'accueil
       </a>
       <a href="/contact" class="border border-gold text-gold font-body font-semibold text-base px-8 py-3.5 rounded-full hover:bg-gold/5 transition-all inline-block">
         Nous contacter
       </a>
+    </div>
+
+    <!-- Quick Navigation to Essential Pages -->
+    <div class="w-full pt-8 border-t border-white/10">
+      <p class="text-xs uppercase font-body font-semibold tracking-wider text-text-muted mb-4">Pages recommandées :</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto">
+        <a href="/" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-gold/40 hover:bg-gold/5 transition-all group">
+          <div class="font-display font-medium text-white group-hover:text-gold text-sm mb-0.5">Accueil</div>
+          <div class="text-xs text-text-muted">Découvrir l'agence</div>
+        </a>
+        <a href="/services" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-gold/40 hover:bg-gold/5 transition-all group">
+          <div class="font-display font-medium text-white group-hover:text-gold text-sm mb-0.5">Services</div>
+          <div class="text-xs text-text-muted">Web, SEO & Ads</div>
+        </a>
+        <a href="/blog" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-gold/40 hover:bg-gold/5 transition-all group">
+          <div class="font-display font-medium text-white group-hover:text-gold text-sm mb-0.5">Blog</div>
+          <div class="text-xs text-text-muted">Guides & conseils</div>
+        </a>
+        <a href="/contact" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-gold/40 hover:bg-gold/5 transition-all group">
+          <div class="font-display font-medium text-white group-hover:text-gold text-sm mb-0.5">Contact</div>
+          <div class="text-xs text-text-muted">Devis gratuit</div>
+        </a>
+      </div>
     </div>
   </div>
 </div>

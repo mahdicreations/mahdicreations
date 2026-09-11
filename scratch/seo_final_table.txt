@@ -1,0 +1,119 @@
+﻿URL: https://mahdicreations.dev
+  Title (57 chars): Mahdi Cr�ations | Agence Web & R�f�rencement SEO au Maroc
+  Desc  (160 chars): Mahdi Cr�ations, agence web � Marrakech sp�cialis�e dans la cr�ation de sites web professionnels, le r�f�rencement naturel SEO et le marketing digital au Maroc.
+  Canonical:     https://mahdicreations.dev/
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/a-propos
+  Title (49 chars): � propos � Mahdi Cr�ations | Agence Web Marrakech
+  Desc  (161 chars): D�couvrez Mahdi Cr�ations, agence web et digitale � Marrakech. Notre vision, nos valeurs et notre �quipe pour concevoir des exp�riences web d'exception au Maroc.
+  Canonical:     https://mahdicreations.dev/a-propos
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/services
+  Title (56 chars): Services Web, SEO & Marketing au Maroc | Mahdi Cr�ations
+  Desc  (162 chars): Services digitaux au Maroc : cr�ation de sites web, r�f�rencement naturel SEO, marketing digital et design sur mesure. Accompagnement complet par Mahdi Cr�ations.
+  Canonical:     https://mahdicreations.dev/services
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/services/creation-web
+  Title (56 chars): Cr�ation Site Web au Maroc & Marrakech | Mahdi Cr�ations
+  Desc  (155 chars): Cr�ation de sites web professionnels au Maroc : vitrines, e-commerce et sur-mesure. Design premium, optimis� SEO et rapide � Marrakech. Devis 100% gratuit.
+  Canonical:     https://mahdicreations.dev/services/creation-web
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/services/seo
+  Title (64 chars): R�f�rencement Naturel SEO au Maroc & Marrakech | Mahdi Cr�ations
+  Desc  (154 chars): Expert r�f�rencement SEO au Maroc. Audit, strat�gie de mots-cl�s, optimisation technique et netlinking pour appara�tre en 1�re page Google. Devis gratuit.
+  Canonical:     https://mahdicreations.dev/services/seo
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/services/marketing
+  Title (60 chars): Marketing Digital au Maroc & Publicit� Ads | Mahdi Cr�ations
+  Desc  (160 chars): Agence marketing digital au Maroc. Campagnes Google Ads, Facebook Ads, gestion r�seaux sociaux et email marketing pour d�velopper votre activit�. Devis gratuit.
+  Canonical:     https://mahdicreations.dev/services/marketing
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/realisations
+  Title (56 chars): Nos R�alisations | Portfolio Agence Web Marrakech, Maroc
+  Desc  (146 chars): D�couvrez nos 18+ r�alisations web : sites vitrines, e-commerce, applications web et identit�s visuelles pour nos clients au Maroc et � Marrakech.
+  Canonical:     https://mahdicreations.dev/realisations
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog
+  Title (60 chars): Blog Web, SEO & Marketing Digital au Maroc | Mahdi Cr�ations
+  Desc  (157 chars): Guides, conseils et actualit�s sur la cr�ation de sites web, le r�f�rencement SEO et le marketing digital au Maroc par Mahdi Cr�ations, agence web Marrakech.
+  Canonical:     https://mahdicreations.dev/blog
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/faq
+  Title (65 chars): FAQ � Questions Fr�quentes | Mahdi Cr�ations Agence Web Marrakech
+  Desc  (162 chars): Retrouvez toutes les r�ponses � vos questions sur la cr�ation de sites web, le r�f�rencement SEO, nos tarifs et nos d�lais. Agence web Mahdi Cr�ations, Marrakech.
+  Canonical:     https://mahdicreations.dev/faq
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/contact
+  Title (48 chars): Contact � Mahdi Cr�ations | Agence Web Marrakech
+  Desc  (157 chars): Contactez Mahdi Cr�ations pour lancer votre projet web. Demandez un devis gratuit ou r�servez votre consultation web gratuite. Agence web � Marrakech, Maroc.
+  Canonical:     https://mahdicreations.dev/contact
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/privacy
+  Title (46 chars): Politique de confidentialit� | Mahdi Cr�ations
+  Desc  (161 chars): Politique de confidentialit� de Mahdi Cr�ations, agence web � Marrakech. Informations transparentes sur la collecte et la protection de vos donn�es personnelles.
+  Canonical:     https://mahdicreations.dev/privacy
+  OG Image:      https://mahdicreations.dev/assets/images/og-image.png
+  Twitter Image: https://mahdicreations.dev/assets/images/og-image.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog/creer-site-web-professionnel-maroc-cout-2026
+  Title (58 chars): Prix Cr�ation Site Web Maroc en 2026 : Co�ts R�els & Devis
+  Desc  (155 chars): Combien co�te un site web professionnel au Maroc en 2026 ? Guide complet des tarifs r�els pour site vitrine, e-commerce et sur-mesure avec Mahdi Cr�ations.
+  Canonical:     https://mahdicreations.dev/blog/creer-site-web-professionnel-maroc-cout-2026
+  OG Image:      https://mahdicreations.dev/assets/images/blog-hero-creation-web.png
+  Twitter Image: https://mahdicreations.dev/assets/images/blog-hero-creation-web.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog/gestion-reseaux-sociaux-maroc-agence
+  Title (59 chars): Gestion R�seaux Sociaux Maroc : Agence ou Interne en 2026 ?
+  Desc  (158 chars): Faut-il confier la gestion de vos r�seaux sociaux � une agence au Maroc ? Avantages, co�ts et strat�gies efficaces pour Instagram, Facebook et TikTok en 2026.
+  Canonical:     https://mahdicreations.dev/blog/gestion-reseaux-sociaux-maroc-agence
+  OG Image:      https://mahdicreations.dev/assets/images/blog-hero-reseaux-sociaux.png
+  Twitter Image: https://mahdicreations.dev/assets/images/blog-hero-reseaux-sociaux.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog/referencement-naturel-maroc-premiere-page-google
+  Title (62 chars): SEO Maroc : Comment �tre en 1�re Page Google | Mahdi Cr�ations
+  Desc  (150 chars): Comment appara�tre en premi�re page Google au Maroc ? Guide complet du r�f�rencement naturel SEO : techniques, strat�gies et erreurs � �viter en 2026.
+  Canonical:     https://mahdicreations.dev/blog/referencement-naturel-maroc-premiere-page-google
+  OG Image:      https://mahdicreations.dev/assets/images/blog-hero-seo.png
+  Twitter Image: https://mahdicreations.dev/assets/images/blog-hero-seo.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog/google-ads-facebook-ads-maroc-budget
+  Title (63 chars): Google Ads & Facebook Ads Maroc : Quel Budget Pr�voir en 2026 ?
+  Desc  (157 chars): Quel budget pr�voir pour Google Ads et Facebook Ads au Maroc en 2026 ? Guide complet des co�ts, strat�gies et ROI pour vos campagnes publicitaires digitales.
+  Canonical:     https://mahdicreations.dev/blog/google-ads-facebook-ads-maroc-budget
+  OG Image:      https://mahdicreations.dev/assets/images/blog-hero-ads.png
+  Twitter Image: https://mahdicreations.dev/assets/images/blog-hero-ads.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog/marketing-digital-riads-hotels-maroc
+  Title (54 chars): Marketing Digital Riads & H�tels au Maroc : Guide 2026
+  Desc  (153 chars): D�couvrez les strat�gies de marketing digital les plus efficaces pour les riads et h�tels au Maroc en 2026 : SEO, r�seaux sociaux, booking et Google Ads.
+  Canonical:     https://mahdicreations.dev/blog/marketing-digital-riads-hotels-maroc
+  OG Image:      https://mahdicreations.dev/assets/images/blog-hero-hotels.png
+  Twitter Image: https://mahdicreations.dev/assets/images/blog-hero-hotels.png
+--------------------------------------------------------------------------------
+URL: https://mahdicreations.dev/blog/logo-charte-graphique-branding-maroc
+  Title (63 chars): Branding & Identit� Visuelle au Maroc : Logo & Charte Graphique
+  Desc  (159 chars): Pourquoi le branding et l'identit� visuelle sont cruciaux pour votre entreprise au Maroc ? Guide logo, charte graphique et image de marque par Mahdi Cr�ations.
+  Canonical:     https://mahdicreations.dev/blog/logo-charte-graphique-branding-maroc
+  OG Image:      https://mahdicreations.dev/assets/images/blog-hero-branding.png
+  Twitter Image: https://mahdicreations.dev/assets/images/blog-hero-branding.png
+--------------------------------------------------------------------------------
