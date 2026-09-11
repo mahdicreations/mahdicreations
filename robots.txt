@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://mahdicreations.ma/sitemap.xml
+Sitemap: https://mahdicreations.dev/sitemap.xml

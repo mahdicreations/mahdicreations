@@ -122,7 +122,7 @@ function buildContactHtml($name, $email, $phone, $service, $message) {
     <h3 style="margin:0 0 10px;font-size:14px;color:#374151;">Description du projet :</h3>
     <p style="margin:0;color:#4B5563;font-size:14px;line-height:1.6;white-space:pre-wrap;">{$message}</p>
   </div>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:20px;">Envoyé depuis le formulaire de contact de mahdicreations.ma</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:20px;">Envoyé depuis le formulaire de contact de mahdicreations.dev</p>
 </div>
 HTML;
 }
@@ -140,7 +140,7 @@ function buildCallbackHtml($name, $phone, $formattedDate) {
     <tr style="border-bottom:1px solid #f3f4f6;"><td style="padding:10px 0;font-weight:bold;color:#374151;">Téléphone :</td><td style="padding:10px 0;color:#4B5563;"><a href="tel:{$phone}" style="color:#c9960c;font-weight:bold;">{$phone}</a> | <a href="https://wa.me/{$safePhone}" style="color:#25D366;">WhatsApp</a></td></tr>
     <tr><td style="padding:10px 0;font-weight:bold;color:#374151;">Date & Heure :</td><td style="padding:10px 0;color:#4B5563;font-weight:bold;">{$formattedDate}</td></tr>
   </table>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:20px;">Envoyé depuis le formulaire de rappel de mahdicreations.ma</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:20px;">Envoyé depuis le formulaire de rappel de mahdicreations.dev</p>
 </div>
 HTML;
 }

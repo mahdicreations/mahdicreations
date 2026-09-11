@@ -1,34 +1,41 @@
 # Mahdi Créations — Apache Configuration
-# Clean URLs + Gzip + Browser Caching
+# Primary Domain: https://mahdicreations.dev
+# Clean URLs + Canonical 301 Redirects + Gzip + Caching
 
 Options -Indexes
 ServerSignature Off
 
-# ── Clean URLs (no .html extension) ──
+# ── Rewrite Engine ──
 RewriteEngine On
 RewriteBase /
 
-# ── 301 Redirects (Legacy URLs) ──
-RewriteRule ^creation-site-web/?$ /services/creation-web/ [R=301,L]
-RewriteRule ^referencement-seo/?$ /services/seo/ [R=301,L]
-RewriteRule ^marketing-digital/?$ /services/marketing/ [R=301,L]
+# ── 1. Permanent Redirect for .ma (if traffic reaches this host) ──
+RewriteCond %{HTTP_HOST} ^(www\.)?mahdicreations\.ma$ [NC]
+RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
 
-# Redirect www to non-www
-RewriteCond %{HTTP_HOST} ^www.(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+# ── 2. Canonical Host: Redirect www to non-www (mahdicreations.dev) ──
+RewriteCond %{HTTP_HOST} ^www\.mahdicreations\.dev$ [NC]
+RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
 
-# Force HTTPS
+# ── 3. Force HTTPS on mahdicreations.dev ──
 RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^mahdicreations\.dev$ [NC]
+RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
 
-# Remove trailing slash (except root)
+# ── 4. 301 Redirects (Legacy Service URLs - No Trailing Slash Policy) ──
+RewriteRule ^creation-site-web/?$ /services/creation-web [R=301,L]
+RewriteRule ^referencement-seo/?$ /services/seo [R=301,L]
+RewriteRule ^marketing-digital/?$ /services/marketing [R=301,L]
+RewriteRule ^blog/services/marketing-riads-hotels-maroc/?$ /blog/marketing-digital-riads-hotels-maroc [R=301,L]
+
+# ── 5. Consistent Trailing-Slash Policy (Enforce NO Trailing Slash on URLs) ──
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)/$ /$1 [R=301,L]
 
-# Serve index.html for clean URLs
+# ── 6. Clean URLs: Serve index.html for extensionless directory paths ──
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !.
+RewriteCond %{REQUEST_URI} !\.
 RewriteRule ^(.*)$ /$1/index.html [L]
 
 # ── Custom Error Pages ──
@@ -60,13 +67,13 @@ ErrorDocument 404 /404.html
 
 # ── Cache-Control Headers ──
 <IfModule mod_headers.c>
-  <FilesMatch ".(html)$">
+  <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
-  <FilesMatch ".(css|js)$">
+  <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch ".(jpg|jpeg|png|gif|webp|svg|ico)$">
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
     Header set Cache-Control "public, max-age=15552000"
   </FilesMatch>
   # Security headers
@@ -76,6 +83,6 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ── PHP API CORS ──
-<FilesMatch ".php$">
-  Header set Access-Control-Allow-Origin "https://mahdicreations.ma"
+<FilesMatch "\.php$">
+  Header set Access-Control-Allow-Origin "https://mahdicreations.dev"
 </FilesMatch>
