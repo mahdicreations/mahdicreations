@@ -221,7 +221,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 7. Dynamic Copyright Year ──
+  // ── 7. Callback Form Submission ("Laissez-nous vous contacter") ──
+  const callbackForms = document.querySelectorAll('.callback-form');
+  callbackForms.forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const wrapper = form.closest('.callback-wrapper');
+      const nameInput = form.querySelector('input[data-field="name"]');
+      const phoneInput = form.querySelector('input[data-field="phone"]');
+      const dateInput = form.querySelector('input[data-field="callDate"]');
+
+      const errorBanner = form.querySelector('.form-error-banner');
+      const successBox = wrapper ? wrapper.querySelector('.callback-success') : null;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const btnText = form.querySelector('.btn-text');
+      const btnSpinner = form.querySelector('.btn-spinner');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const callDate = dateInput ? dateInput.value : '';
+
+      if (!name || !phone) {
+        if (errorBanner) {
+          errorBanner.textContent = 'Veuillez renseigner votre nom et votre numéro de téléphone.';
+          errorBanner.style.display = 'block';
+        }
+        return;
+      }
+
+      if (errorBanner) errorBanner.style.display = 'none';
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.style.display = 'none';
+      if (btnSpinner) btnSpinner.style.display = 'inline-flex';
+
+      try {
+        const response = await fetch('/contact/send-mail.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'callback',
+            name,
+            phone,
+            callDate,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          form.style.display = 'none';
+          if (successBox) {
+            successBox.style.display = 'flex';
+          }
+          form.reset();
+        } else {
+          throw new Error(data.error || "Une erreur est survenue lors de l'envoi.");
+        }
+      } catch (err) {
+        if (errorBanner) {
+          errorBanner.textContent =
+            err.message || 'Erreur de connexion. Veuillez réessayer ou nous contacter sur WhatsApp.';
+          errorBanner.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.style.display = 'inline-flex';
+        if (btnSpinner) btnSpinner.style.display = 'none';
+      }
+    });
+  });
+
+  // ── 8. Dynamic Copyright Year ──
   const copyrightYear = document.getElementById('copyright-year');
   if (copyrightYear) {
     copyrightYear.textContent = new Date().getFullYear();

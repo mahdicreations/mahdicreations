@@ -10,9 +10,9 @@
  */
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: https://mahdicreations.ma');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Accept');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -34,38 +34,43 @@ define('SMTP_FROM_NAME', 'Mahdi Créations');
 define('SMTP_FROM_EMAIL', 'contact@mahdicreations.dev');
 define('CONTACT_RECEIVER', 'mahdicreation.group@gmail.com');
 
-// ── Read + Sanitize Input ──
+// ── Read + Sanitize Input (JSON or standard POST) ──
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
 
+if (!$data && !empty($_POST)) {
+    $data = $_POST;
+}
+
 if (!$data) {
     http_response_code(400);
-    echo json_encode(['error' => 'Données invalides.']);
+    echo json_encode(['error' => 'Données invalides ou formulaire vide.']);
     exit;
 }
 
-$type    = isset($data['type'])    ? sanitize($data['type'])    : 'contact';
-$name    = isset($data['name'])    ? sanitize($data['name'])    : '';
-$phone   = isset($data['phone'])   ? sanitize($data['phone'])   : '';
-$email   = isset($data['email'])   ? sanitize($data['email'])   : '';
-$service = isset($data['service']) ? sanitize($data['service']) : '';
-$message = isset($data['message']) ? sanitize($data['message']) : '';
+$type     = isset($data['type'])     ? sanitize($data['type'])     : 'contact';
+$name     = isset($data['name'])     ? sanitize($data['name'])     : '';
+$phone    = isset($data['phone'])    ? sanitize($data['phone'])    : '';
+$email    = isset($data['email'])    ? sanitize($data['email'])    : '';
+$service  = isset($data['service'])  ? sanitize($data['service'])  : '';
+$message  = isset($data['message'])  ? sanitize($data['message'])  : '';
 $callDate = isset($data['callDate']) ? sanitize($data['callDate']) : '';
 
 // Basic validation
 if (!$name || !$phone) {
     http_response_code(400);
-    echo json_encode(['error' => 'Le nom et le téléphone sont obligatoires.']);
+    echo json_encode(['error' => 'Le nom et le numéro de téléphone sont obligatoires.']);
     exit;
 }
 
 // ── Build Email Content ──
 if ($type === 'callback') {
-    $subject = "📞 Demande de rappel - {$name}";
-    $formattedDate = $callDate ? date('d/m/Y à H:i', strtotime($callDate)) : $callDate;
+    $dateLabel = $callDate ? $callDate : 'Au plus vite';
+    $subject = "[Demande de Rappel] {$name} - {$dateLabel}";
+    $formattedDate = $callDate ? date('d/m/Y à H:i', strtotime($callDate)) : 'Dès que possible';
     $body = buildCallbackHtml($name, $phone, $formattedDate);
 } else {
-    $subject = "✉️ Nouveau contact - {$name} ({$service})";
+    $subject = "[Nouveau Contact] {$name}" . ($service ? " ({$service})" : '');
     $body = buildContactHtml($name, $email, $phone, $service, $message);
 }
 
@@ -160,29 +165,44 @@ class SimpleSMTP {
     public function send($fromEmail, $fromName, $to, $subject, $htmlBody) {
         try {
             $prefix = ($this->port == 465) ? 'ssl://' : 'tls://';
-            $this->conn = fsockopen($prefix . $this->host, $this->port, $errno, $errstr, 15);
+            $this->conn = @fsockopen($prefix . $this->host, $this->port, $errno, $errstr, 15);
             if (!$this->conn) {
                 $altPrefix = ($prefix === 'ssl://') ? 'tls://' : 'ssl://';
-                $this->conn = fsockopen($altPrefix . $this->host, $this->port, $errno, $errstr, 15);
+                $this->conn = @fsockopen($altPrefix . $this->host, $this->port, $errno, $errstr, 15);
                 if (!$this->conn) {
-                    $this->conn = fsockopen($this->host, $this->port, $errno, $errstr, 15);
-                    if (!$this->conn) return "Cannot connect to SMTP: {$errstr}";
+                    $this->conn = @fsockopen($this->host, $this->port, $errno, $errstr, 15);
+                    if (!$this->conn) return "Connexion SMTP impossible: {$errstr} (code: {$errno})";
                 }
             }
             stream_set_timeout($this->conn, 15);
 
-            $this->read(); // 220 greeting
-            $this->cmd("EHLO mahdicreations.dev");
-            $this->cmd("AUTH LOGIN");
-            $this->cmd(base64_encode($this->user));
-            $this->cmd(base64_encode($this->pass));
-            $this->cmd("MAIL FROM:<{$fromEmail}>");
-            $this->cmd("RCPT TO:<{$to}>");
-            $this->cmd("DATA");
+            $r = $this->read();
+            if (substr($r, 0, 3) !== '220') return "Erreur d'accueil SMTP: {$r}";
 
-            $boundary = md5(uniqid());
+            $r = $this->cmd("EHLO mahdicreations.dev");
+            if (substr($r, 0, 1) > '3') return "Erreur EHLO: {$r}";
+
+            $r = $this->cmd("AUTH LOGIN");
+            if (substr($r, 0, 1) > '3') return "Erreur AUTH LOGIN: {$r}";
+
+            $r = $this->cmd(base64_encode($this->user));
+            if (substr($r, 0, 1) > '3') return "Erreur identifiant SMTP ({$this->user}): {$r}";
+
+            $r = $this->cmd(base64_encode($this->pass));
+            if (substr($r, 0, 1) > '3') return "Erreur mot de passe SMTP: {$r}";
+
+            $r = $this->cmd("MAIL FROM:<{$fromEmail}>");
+            if (substr($r, 0, 1) > '3') return "Erreur MAIL FROM ({$fromEmail}): {$r}";
+
+            $r = $this->cmd("RCPT TO:<{$to}>");
+            if (substr($r, 0, 1) > '3') return "Erreur RCPT TO ({$to}): {$r}";
+
+            $r = $this->cmd("DATA");
+            if (substr($r, 0, 1) > '3') return "Erreur DATA: {$r}";
+
             $headers  = "From: =?UTF-8?B?" . base64_encode($fromName) . "?= <{$fromEmail}>\r\n";
             $headers .= "To: {$to}\r\n";
+            $headers .= "Reply-To: <{$fromEmail}>\r\n";
             $headers .= "Subject: =?UTF-8?B?" . base64_encode($subject) . "?=\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
@@ -191,7 +211,9 @@ class SimpleSMTP {
 
             $encodedBody = chunk_split(base64_encode($htmlBody));
             $this->write($headers . "\r\n" . $encodedBody . "\r\n.\r\n");
-            $this->read();
+            $r = $this->read();
+            if (substr($r, 0, 1) > '3') return "Erreur transmission corps du message: {$r}";
+
             $this->cmd("QUIT");
             fclose($this->conn);
             return true;
