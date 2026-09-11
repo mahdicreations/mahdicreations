@@ -1,139 +1,229 @@
+/**
+ * Mahdi Créations — Main Client-Side Logic
+ * Pure Vanilla JavaScript (Zero Dependencies)
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Menu Toggle
-    const btnMenu = document.getElementById('btn-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const iconMenu = document.getElementById('icon-menu');
-    const iconClose = document.getElementById('icon-close');
-
-    if (btnMenu && mobileMenu) {
-        btnMenu.addEventListener('click', () => {
-            const isExpanded = btnMenu.getAttribute('aria-expanded') === 'true';
-            btnMenu.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
-            if (iconMenu && iconClose) {
-                iconMenu.classList.toggle('hidden');
-                iconClose.classList.toggle('hidden');
+  // ── 1. Scroll Reveal Animations (.reveal -> .is-visible) ──
+  const reveals = document.querySelectorAll('.reveal');
+  if (reveals.length > 0) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
             }
-        });
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+      );
+
+      reveals.forEach((el) => {
+        // If element is already in initial viewport, reveal immediately
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('is-visible');
+        } else {
+          observer.observe(el);
+        }
+      });
+    } else {
+      reveals.forEach((el) => el.classList.add('is-visible'));
     }
+  }
 
-    // 2. Fixed Header Scroll Effect
-    const header = document.querySelector('header');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('bg-dark/95', 'shadow-md', 'backdrop-blur-md');
-                header.classList.remove('bg-transparent', 'py-4');
-                header.classList.add('py-2');
-            } else {
-                header.classList.remove('bg-dark/95', 'shadow-md', 'backdrop-blur-md', 'py-2');
-                header.classList.add('bg-transparent', 'py-4');
-            }
-        });
-    }
+  // ── 2. Mobile Menu Toggle ──
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
 
-    // 3. Scroll to Top Button
-    const scrollTopBtn = document.getElementById('scroll-top');
-    if (scrollTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-                scrollTopBtn.classList.add('opacity-100');
-            } else {
-                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
-                scrollTopBtn.classList.remove('opacity-100');
-            }
-        });
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+  if (menuBtn && mobileNav) {
+    // Ensure mobile menu starts hidden
+    mobileNav.style.display = 'none';
 
-    // 4. FAQ Accordion
-    const faqButtons = document.querySelectorAll('.faq-button');
-    faqButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('svg');
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-            button.setAttribute('aria-expanded', !isExpanded);
-            
-            if (!isExpanded) {
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.classList.add('mt-4');
-                if (icon) icon.style.transform = "rotate(180deg)";
-            } else {
-                content.style.maxHeight = "0px";
-                content.classList.remove('mt-4');
-                if (icon) icon.style.transform = "rotate(0deg)";
-            }
-        });
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !expanded);
+      if (expanded) {
+        mobileNav.style.display = 'none';
+        if (menuIcon) menuIcon.style.display = 'block';
+        if (closeIcon) closeIcon.style.display = 'none';
+      } else {
+        mobileNav.style.display = 'block';
+        if (menuIcon) menuIcon.style.display = 'none';
+        if (closeIcon) closeIcon.style.display = 'block';
+      }
     });
 
-    // 5. Contact Form Submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const statusDiv = document.getElementById('form-status');
-            
-            if (submitBtn) submitBtn.disabled = true;
-            if (statusDiv) {
-                statusDiv.className = 'mt-4 p-3 rounded text-sm text-center bg-gray-800 text-gray-300';
-                statusDiv.textContent = 'Envoi en cours...';
-            }
+    // Close on navigation link click
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        if (menuIcon) menuIcon.style.display = 'block';
+        if (closeIcon) closeIcon.style.display = 'none';
+      });
+    });
+  }
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
-            data.type = 'contact'; // For the backend to know it's the main form
+  // ── 3. Scroll to Top Button ──
+  const scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (window.scrollY > 300) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      },
+      { passive: true }
+    );
 
-            try {
-                const response = await fetch('/contact/send-mail.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
-                const result = await response.json();
+  // ── 4. FAQ Accordion ──
+  const faqTriggers = document.querySelectorAll('.faq-trigger');
+  faqTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const answer = item ? item.querySelector('.faq-answer') : null;
+      if (!item || !answer) return;
 
-                if (response.ok) {
-                    if (statusDiv) {
-                        statusDiv.className = 'mt-4 p-3 rounded text-sm text-center bg-green-900/50 text-green-300 border border-green-800';
-                        statusDiv.textContent = 'Merci ! Votre message a été envoyé avec succès.';
-                    }
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.error || 'Erreur lors de l\'envoi');
-                }
-            } catch (error) {
-                if (statusDiv) {
-                    statusDiv.className = 'mt-4 p-3 rounded text-sm text-center bg-red-900/50 text-red-300 border border-red-800';
-                    statusDiv.textContent = error.message;
-                }
-            } finally {
-                if (submitBtn) submitBtn.disabled = false;
-            }
+      const isOpen = item.classList.contains('open');
+
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item.open').forEach((openItem) => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          const openAnswer = openItem.querySelector('.faq-answer');
+          if (openAnswer) openAnswer.classList.remove('open');
+          const openTrigger = openItem.querySelector('.faq-trigger');
+          if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle clicked item
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        answer.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ── 5. Portfolio Filtering ──
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (filterButtons.length > 0 && projectCards.length > 0) {
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update button styles
+        filterButtons.forEach((b) => {
+          b.className =
+            'px-6 py-2.5 rounded-full text-sm font-body font-medium transition-all cursor-pointer border border-white/10 text-text-muted hover:border-gold/30 hover:text-gold';
         });
-    }
+        btn.className =
+          'px-6 py-2.5 rounded-full text-sm font-body font-medium transition-all cursor-pointer bg-gold-gradient text-dark shadow-md';
 
-    // 6. Intersection Observer for Fade-In Animations
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    if (animatedElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-8');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        animatedElements.forEach(el => {
-            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
-            observer.observe(el);
+        // Filter cards
+        projectCards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'Tous' || category === filter) {
+            card.classList.remove('hidden-card');
+          } else {
+            card.classList.add('hidden-card');
+          }
         });
-    }
+      });
+    });
+  }
+
+  // ── 6. Contact Form Submission ──
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('contact-name');
+      const emailInput = document.getElementById('contact-email');
+      const phoneInput = document.getElementById('contact-phone');
+      const serviceInput = document.getElementById('contact-service');
+      const messageInput = document.getElementById('contact-message');
+
+      const btnText = document.getElementById('contact-btn-text');
+      const btnSpinner = document.getElementById('contact-btn-spinner');
+      const errorBox = document.getElementById('contact-error');
+      const successBox = document.getElementById('contact-success');
+      const formWrapper = document.getElementById('contact-form-wrapper');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const service = serviceInput ? serviceInput.value : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      if (!name || !phone) {
+        if (errorBox) {
+          errorBox.textContent = 'Veuillez renseigner votre nom et votre numéro de téléphone.';
+          errorBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (errorBox) errorBox.style.display = 'none';
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.style.display = 'none';
+      if (btnSpinner) btnSpinner.style.display = 'inline-flex';
+
+      try {
+        const response = await fetch('/contact/send-mail.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'contact', name, email, phone, service, message }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          if (formWrapper) formWrapper.style.display = 'none';
+          if (successBox) successBox.style.display = 'flex';
+          contactForm.reset();
+        } else {
+          throw new Error(data.error || "Une erreur est survenue lors de l'envoi.");
+        }
+      } catch (err) {
+        if (errorBox) {
+          errorBox.textContent =
+            err.message || 'Erreur de connexion. Veuillez réessayer ou nous contacter sur WhatsApp.';
+          errorBox.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.style.display = 'inline-flex';
+        if (btnSpinner) btnSpinner.style.display = 'none';
+      }
+    });
+  }
+
+  // ── 7. Dynamic Copyright Year ──
+  const copyrightYear = document.getElementById('copyright-year');
+  if (copyrightYear) {
+    copyrightYear.textContent = new Date().getFullYear();
+  }
 });
