@@ -25,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ── SMTP Configuration (mirrors .env values) ──
-define('SMTP_HOST', 'smtp-relay.brevo.com');
-define('SMTP_PORT', 587);
-define('SMTP_USER', 'affef8001@smtp-brevo.com');
-define('SMTP_PASS', 'xsmtpsib-d23f6086b9cc6a0800167fe8c076fbeea1fd74cf615ecb5fe56d595826e32229-xZ79t4SlLUozXy2p');
+// ── SMTP Configuration (Hostinger) ──
+define('SMTP_HOST', 'smtp.hostinger.com');
+define('SMTP_PORT', 465);
+define('SMTP_USER', 'contact@mahdicreations.dev');
+define('SMTP_PASS', 'aAA1991369@@');
 define('SMTP_FROM_NAME', 'Mahdi Créations');
-define('SMTP_FROM_EMAIL', 'affef8001@smtp-brevo.com');
+define('SMTP_FROM_EMAIL', 'contact@mahdicreations.dev');
 define('CONTACT_RECEIVER', 'mahdicreation.group@gmail.com');
 
 // ── Read + Sanitize Input ──
@@ -159,16 +159,20 @@ class SimpleSMTP {
 
     public function send($fromEmail, $fromName, $to, $subject, $htmlBody) {
         try {
-            $this->conn = fsockopen('tls://' . $this->host, $this->port, $errno, $errstr, 15);
+            $prefix = ($this->port == 465) ? 'ssl://' : 'tls://';
+            $this->conn = fsockopen($prefix . $this->host, $this->port, $errno, $errstr, 15);
             if (!$this->conn) {
-                // Try without TLS wrapper (STARTTLS)
-                $this->conn = fsockopen($this->host, $this->port, $errno, $errstr, 15);
-                if (!$this->conn) return "Cannot connect to SMTP: {$errstr}";
+                $altPrefix = ($prefix === 'ssl://') ? 'tls://' : 'ssl://';
+                $this->conn = fsockopen($altPrefix . $this->host, $this->port, $errno, $errstr, 15);
+                if (!$this->conn) {
+                    $this->conn = fsockopen($this->host, $this->port, $errno, $errstr, 15);
+                    if (!$this->conn) return "Cannot connect to SMTP: {$errstr}";
+                }
             }
             stream_set_timeout($this->conn, 15);
 
             $this->read(); // 220 greeting
-            $this->cmd("EHLO mahdicreations.ma");
+            $this->cmd("EHLO mahdicreations.dev");
             $this->cmd("AUTH LOGIN");
             $this->cmd(base64_encode($this->user));
             $this->cmd(base64_encode($this->pass));

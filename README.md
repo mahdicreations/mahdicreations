@@ -60,8 +60,8 @@ Le déploiement est extrêmement simple.
 
 ### Configuration du Formulaire de Contact
 
-Le formulaire de contact fonctionne via le fichier `dist/api/contact.php`. Il utilise l'API SMTP de Brevo.
-Si vous changez d'identifiants SMTP, vous devez mettre à jour les constantes au début du fichier `dist/api/contact.php`.
+Le formulaire de contact fonctionne via le fichier `contact/send-mail.php`. Il utilise le serveur SMTP de Hostinger (`smtp.hostinger.com` sur le port 465 SSL).
+Les identifiants SMTP peuvent être modifiés directement au début du fichier `contact/send-mail.php`.
 
 ## Édition du Contenu
 
