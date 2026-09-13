@@ -780,6 +780,10 @@ video {
   margin-top: auto;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -1055,6 +1059,10 @@ video {
   max-width: 20rem;
 }
 
+.max-w-\[1560px\] {
+  max-width: 1560px;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -1271,6 +1279,10 @@ video {
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.whitespace-nowrap {
   white-space: nowrap;
 }
 
@@ -1802,6 +1814,10 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[13px\] {
+  font-size: 13px;
 }
 
 .font-bold {
@@ -3295,6 +3311,10 @@ html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="a
 }
 
 @media (min-width: 640px) {
+  .sm\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
   .sm\:h-48 {
     height: 12rem;
   }
@@ -3326,6 +3346,11 @@ html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="a
   .sm\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .sm\:text-5xl {
@@ -3366,6 +3391,10 @@ html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="a
 
   .md\:mr-4 {
     margin-right: 1rem;
+  }
+
+  .md\:ml-3 {
+    margin-left: 0.75rem;
   }
 
   .md\:h-56 {
@@ -3485,6 +3514,10 @@ html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="a
     margin-right: 1.5rem;
   }
 
+  .lg\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -3558,6 +3591,11 @@ html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="a
     padding-right: 4rem;
   }
 
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .lg\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3590,6 +3628,26 @@ html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="a
 @media (min-width: 1280px) {
   .xl\:gap-8 {
     gap: 2rem;
+  }
+
+  .xl\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .xl\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .xl\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:gap-6 {
+    gap: 1.5rem;
   }
 }
 
