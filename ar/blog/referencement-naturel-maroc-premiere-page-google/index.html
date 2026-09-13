@@ -141,23 +141,33 @@
 
     
     <!-- Language Switcher -->
-    <div class="relative group ml-4 lg:ml-6 flex items-center">
-      <button aria-label="محدد اللغة" aria-expanded="false" class="flex items-center gap-2 text-sm font-body text-text-white hover:text-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-md p-1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-        <span class="sr-only lg:not-sr-only lg:inline-block">AR</span>
+    <div class="relative group mr-3 md:mr-4 lg:mr-6 flex items-center">
+      <button type="button" aria-label="محدد اللغة" aria-expanded="false" class="flex items-center gap-2 text-xs font-body text-text-white hover:text-gold bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold/30 transition-all rounded-full px-2.5 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+        <img src="/assets/images/flags/ma.svg" alt="AR" class="w-4 h-3 rounded-[2px] object-cover shadow-sm shrink-0" width="16" height="12">
+        <span class="font-medium tracking-wide">AR</span>
+        <svg class="w-3 h-3 text-text-muted group-hover:text-gold transition-transform duration-200 group-hover:rotate-180 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
-      <div class="absolute right-0 top-full mt-2 w-40 bg-dark-card border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden" dir="ltr">
-        <a href="/blog/referencement-naturel-maroc-premiere-page-google" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-white" hreflang="fr" >
-          <span class="text-lg leading-none" aria-hidden="true">🇫🇷</span>
-          <span>الفرنسية</span>
+      <div class="absolute start-0 top-full mt-2 w-44 bg-dark-card border border-white/10 rounded-2xl shadow-2xl p-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden backdrop-blur-xl" dir="ltr">
+        <a href="/blog/referencement-naturel-maroc-premiere-page-google" class="flex items-center justify-between px-3 py-2 rounded-xl transition-all text-xs text-text-muted hover:text-white hover:bg-white/5" hreflang="fr">
+          <div class="flex items-center gap-2.5">
+            <img src="/assets/images/flags/fr.svg" alt="Français" class="w-4 h-3 rounded-[2px] object-cover shadow-sm shrink-0" width="16" height="12">
+            <span>Français</span>
+          </div>
+          
         </a>
-        <a href="/en/blog/referencement-naturel-maroc-premiere-page-google" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-text-muted hover:text-white" hreflang="en" >
-          <span class="text-lg leading-none" aria-hidden="true">🇬🇧</span>
-          <span>الإنجليزية</span>
+        <a href="/en/blog/referencement-naturel-maroc-premiere-page-google" class="flex items-center justify-between px-3 py-2 rounded-xl transition-all text-xs text-text-muted hover:text-white hover:bg-white/5" hreflang="en">
+          <div class="flex items-center gap-2.5">
+            <img src="/assets/images/flags/gb.svg" alt="English" class="w-4 h-3 rounded-[2px] object-cover shadow-sm shrink-0" width="16" height="12">
+            <span>English</span>
+          </div>
+          
         </a>
-        <a href="/ar/blog/referencement-naturel-maroc-premiere-page-google" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-text-muted hover:text-white" hreflang="ar" aria-current="page">
-          <span class="text-lg leading-none" aria-hidden="true">🇲🇦</span>
-          <span dir="rtl" class="font-body w-full text-right">العربية</span>
+        <a href="/ar/blog/referencement-naturel-maroc-premiere-page-google" class="flex items-center justify-between px-3 py-2 rounded-xl transition-all text-xs bg-gold/15 text-gold font-semibold" hreflang="ar" aria-current="page">
+          <div class="flex items-center gap-2.5">
+            <img src="/assets/images/flags/ma.svg" alt="العربية" class="w-4 h-3 rounded-[2px] object-cover shadow-sm shrink-0" width="16" height="12">
+            <span class="font-body">العربية</span>
+          </div>
+          <svg class="w-3.5 h-3.5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </a>
       </div>
     </div>
