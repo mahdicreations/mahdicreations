@@ -85,6 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMenu(false);
       }
     });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        closeMenu(true);
+      }
+    });
   }
 
   // ── Language Switcher Dropdown (Click, Touch & Keyboard Support) ──
@@ -221,6 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 6. Contact Form Submission ──
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
+    const formTimeInput = document.getElementById('contact-form-time');
+    if (formTimeInput) formTimeInput.value = Date.now();
+
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -229,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const phoneInput = document.getElementById('contact-phone');
       const serviceInput = document.getElementById('contact-service');
       const messageInput = document.getElementById('contact-message');
+      const hpInput = document.getElementById('contact-hp');
 
       const btnText = document.getElementById('contact-btn-text');
       const btnSpinner = document.getElementById('contact-btn-spinner');
@@ -242,11 +253,48 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = phoneInput ? phoneInput.value.trim() : '';
       const service = serviceInput ? serviceInput.value : '';
       const message = messageInput ? messageInput.value.trim() : '';
+      const website_url = hpInput ? hpInput.value.trim() : '';
+      const form_time = formTimeInput ? formTimeInput.value : Date.now();
 
-      if (!name || !phone) {
+      // Reset ARIA states
+      [nameInput, emailInput, phoneInput, serviceInput, messageInput].forEach(inp => {
+        if (inp) {
+          inp.setAttribute('aria-invalid', 'false');
+          inp.removeAttribute('aria-describedby');
+        }
+      });
+
+      // Strict validation for all 5 asterisks
+      if (!name || !email || !phone || !service || !message) {
         if (errorBox) {
-          errorBox.textContent = 'Veuillez renseigner votre nom et votre numéro de téléphone.';
+          const isAr = document.documentElement.lang === 'ar';
+          const isEn = document.documentElement.lang === 'en';
+          errorBox.textContent = isAr ? 'يرجى ملء جميع الحقول المطلوبة (*).' :
+                                (isEn ? 'Please fill in all required fields (*).' :
+                                        'Veuillez remplir tous les champs obligatoires (*).');
           errorBox.style.display = 'block';
+        }
+        [nameInput, emailInput, phoneInput, serviceInput, messageInput].forEach(inp => {
+          if (inp && (!inp.value || inp.value.trim() === '')) {
+            inp.setAttribute('aria-invalid', 'true');
+            inp.setAttribute('aria-describedby', 'contact-error');
+          }
+        });
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (errorBox) {
+          const isAr = document.documentElement.lang === 'ar';
+          const isEn = document.documentElement.lang === 'en';
+          errorBox.textContent = isAr ? 'يرجى إدخال عنوان بريد إلكتروني صالح.' :
+                                (isEn ? 'Please enter a valid email address.' :
+                                        'Veuillez saisir une adresse email valide.');
+          errorBox.style.display = 'block';
+        }
+        if (emailInput) {
+          emailInput.setAttribute('aria-invalid', 'true');
+          emailInput.setAttribute('aria-describedby', 'contact-error');
         }
         return;
       }
@@ -260,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch('/contact/send-mail.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'contact', name, email, phone, service, message }),
+          body: JSON.stringify({ type: 'contact', name, email, phone, service, message, website_url, form_time }),
         });
 
         const data = await response.json();
@@ -395,5 +443,99 @@ document.addEventListener('DOMContentLoaded', () => {
       setInterval(nextHeroSlide, 8000);
     }, 4000);
   }
+
+  // ── 10. On-Demand Tawk.to with Title Lock & WhatsApp Fallback ──
+  (function initOnDemandChat() {
+    var chatBtn = document.getElementById('live-chat-toggle');
+    var chatContainer = document.getElementById('chat-widget-container');
+    var tawkLoaded = false;
+    var originalTitle = document.title;
+
+    // Strict Title Lock: Prevent Tawk from ever changing SEO title (e.g. "1 new message")
+    try {
+      var titleDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, 'title') ||
+                            Object.getOwnPropertyDescriptor(HTMLDocument.prototype, 'title');
+      if (titleDescriptor && titleDescriptor.set) {
+        Object.defineProperty(document, 'title', {
+          get: function() { return originalTitle; },
+          set: function(val) {
+            if (/new message|nouveau message|رسالة جديدة|\(\d+\)/i.test(val)) {
+              return;
+            }
+            originalTitle = val;
+          },
+          configurable: true
+        });
+      }
+    } catch (e) {}
+
+    var titleEl = document.querySelector('title');
+    if (titleEl && window.MutationObserver) {
+      var observer = new MutationObserver(function() {
+        if (/new message|nouveau message|رسالة جديدة|\(\d+\)/i.test(document.title)) {
+          document.title = originalTitle;
+        }
+      });
+      observer.observe(titleEl, { childList: true, characterData: true, subtree: true });
+    }
+
+    function loadTawk(shouldMaximize) {
+      if (tawkLoaded) {
+        if (shouldMaximize && window.Tawk_API && window.Tawk_API.maximize) {
+          window.Tawk_API.maximize();
+        }
+        return;
+      }
+      tawkLoaded = true;
+
+      if (chatBtn) {
+        var icon = chatBtn.querySelector('.chat-icon-default');
+        var spinner = chatBtn.querySelector('.chat-icon-loading');
+        if (icon) icon.classList.add('hidden');
+        if (spinner) spinner.classList.remove('hidden');
+      }
+
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
+
+      window.Tawk_API.onLoad = function() {
+        if (chatContainer) chatContainer.style.display = 'none';
+        if (shouldMaximize && window.Tawk_API.maximize) {
+          window.Tawk_API.maximize();
+        }
+      };
+
+      var s1 = document.createElement('script');
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6aa35524279bff344394a6f4/1k270963a';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      document.head.appendChild(s1);
+    }
+
+    if (chatBtn) {
+      chatBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        loadTawk(true);
+      });
+    }
+
+    if (chatContainer) {
+      chatContainer.addEventListener('mouseenter', function() {
+        loadTawk(false);
+      }, { once: true });
+      chatContainer.addEventListener('pointerenter', function() {
+        loadTawk(false);
+      }, { once: true });
+    }
+
+    // On /contact/ pages only: load after 20 seconds
+    if (window.location.pathname.indexOf('/contact') !== -1) {
+      setTimeout(function() {
+        loadTawk(false);
+      }, 20000);
+    }
+  })();
 });
+
 

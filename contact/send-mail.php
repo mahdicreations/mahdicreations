@@ -1,18 +1,20 @@
 <?php
 /**
- * Mahdi Créations — contact.php
- * Brevo SMTP mailer — replaces Next.js /api/contact route
- * Deploy at: /api/contact.php on your Apache/PHP server
- *
- * PHPMailer is used for reliable SMTP delivery.
- * Install via: composer require phpmailer/phpmailer
- * OR use the bundled PHPMailer class below (no composer needed).
+ * Mahdi Créations — contact/send-mail.php
+ * Secure Contact & Callback API endpoint
+ * Replaces old form handler with hardened validation, anti-bot & rate limiting
  */
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
+// Safe UTF-8 handling
+if (function_exists('mb_internal_encoding')) {
+    mb_internal_encoding('UTF-8');
+}
+
+// Handle CORS
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: https://mahdicreations.dev');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Accept');
+header('Access-Control-Allow-Headers: Content-Type, Accept, X-Test-Request');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -25,45 +27,132 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ── SMTP Configuration (Hostinger) ──
-define('SMTP_HOST', 'smtp.hostinger.com');
-define('SMTP_PORT', 465);
-define('SMTP_USER', 'contact@mahdicreations.dev');
-define('SMTP_PASS', 'aAA1991369@@');
+// ── Rate Limiting (Max 5 submissions per IP per hour) ──
+$ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+$ipHash = md5($ip . '_mc_salt_2026');
+$rateLimitFile = sys_get_temp_dir() . '/mc_rl_' . $ipHash . '.json';
+
+$now = time();
+$attempts = [];
+if (file_exists($rateLimitFile)) {
+    $content = @file_get_contents($rateLimitFile);
+    $data = json_decode($content, true);
+    if (is_array($data)) {
+        // Keep attempts from the last 3600 seconds
+        $attempts = array_filter($data, function($t) use ($now) {
+            return ($now - $t) < 3600;
+        });
+    }
+}
+
+if (count($attempts) >= 5) {
+    http_response_code(429);
+    logRejection($ip, 'rate_limit_exceeded');
+    echo json_encode(['error' => 'Trop de demandes. Veuillez patienter avant de réessayer ou nous contacter sur WhatsApp.']);
+    exit;
+}
+
+// Record attempt
+$attempts[] = $now;
+@file_put_contents($rateLimitFile, json_encode($attempts), LOCK_EX);
+
+// ── Read + Parse Input (JSON or standard POST) ──
+$isJson = false;
+$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+$raw = file_get_contents('php://input');
+if (empty($raw) && php_sapi_name() === 'cli') {
+    $raw = file_get_contents('php://stdin');
+}
+
+$input = json_decode($raw, true);
+if ($input && is_array($input)) {
+    $isJson = true;
+} else {
+    $input = $_POST;
+}
+
+// Honeypot check: 'website_url' must be empty
+if (!empty($input['website_url'])) {
+    logRejection($ip, 'honeypot_triggered');
+    // Pretend success to bot without sending email
+    echo json_encode(['success' => true, 'message' => 'Message envoyé avec succès.']);
+    exit;
+}
+
+// Submission Timing check: refuse if under 3 seconds
+if (isset($input['form_time'])) {
+    $formTime = (int)$input['form_time'];
+    if ($formTime > 100000000000) { $formTime = (int)($formTime / 1000); }
+    if ($formTime > 0 && ($now - $formTime) < 3) {
+        logRejection($ip, 'submission_too_fast');
+        http_response_code(400);
+        echo json_encode(['error' => 'Envoi trop rapide. Veuillez patienter quelques secondes.']);
+        exit;
+    }
+}
+
+// Sanitize & Validate fields
+$type     = sanitize($input['type'] ?? 'contact', 20);
+$name     = sanitize($input['name'] ?? '', 100);
+$email    = sanitize($input['email'] ?? '', 150);
+$phone    = sanitize($input['phone'] ?? '', 30);
+$service  = sanitize($input['service'] ?? '', 100);
+$message  = sanitize($input['message'] ?? '', 3000);
+$callDate = sanitize($input['callDate'] ?? '', 50);
+
+// Prevent CRLF Injection in headers
+if (hasCrlf($name) || hasCrlf($email) || hasCrlf($phone) || hasCrlf($service)) {
+    logRejection($ip, 'crlf_detected');
+    http_response_code(400);
+    echo json_encode(['error' => 'Caractères non autorisés détectés.']);
+    exit;
+}
+
+// Validation based on type
+if ($type === 'callback') {
+    if (empty($name) || empty($phone)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Le nom et le numéro de téléphone sont obligatoires.']);
+        exit;
+    }
+} else {
+    // All 5 fields required for contact form (as per asterisks)
+    if (empty($name) || empty($email) || empty($phone) || empty($service) || empty($message)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Tous les champs obligatoires (*) doivent être remplis.']);
+        exit;
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Adresse email invalide.']);
+        exit;
+    }
+}
+
+// Validate phone characters
+if (!preg_match('/^[0-9+()\s.-]{6,25}$/', $phone)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Numéro de téléphone invalide.']);
+    exit;
+}
+
+// Test Mode: Never send real emails in test mode!
+$isTest = !empty($_SERVER['HTTP_X_TEST_REQUEST']) || !empty($input['is_test']);
+if ($isTest) {
+    echo json_encode(['success' => true, 'message' => '[TEST MODE] Validated successfully without sending email.']);
+    exit;
+}
+
+// SMTP credentials (prefer env var, fallback to current Hostinger config)
+define('SMTP_HOST', getenv('SMTP_HOST') ?: 'smtp.hostinger.com');
+define('SMTP_PORT', (int)(getenv('SMTP_PORT') ?: 465));
+define('SMTP_USER', getenv('SMTP_USER') ?: 'contact@mahdicreations.dev');
+define('SMTP_PASS', getenv('SMTP_PASS') ?: 'aAA1991369@@');
 define('SMTP_FROM_NAME', 'Mahdi Créations');
 define('SMTP_FROM_EMAIL', 'contact@mahdicreations.dev');
-define('CONTACT_RECEIVER', 'mahdicreation.group@gmail.com');
+define('CONTACT_RECEIVER', getenv('CONTACT_RECEIVER') ?: 'mahdicreation.group@gmail.com');
 
-// ── Read + Sanitize Input (JSON or standard POST) ──
-$raw = file_get_contents('php://input');
-$data = json_decode($raw, true);
-
-if (!$data && !empty($_POST)) {
-    $data = $_POST;
-}
-
-if (!$data) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Données invalides ou formulaire vide.']);
-    exit;
-}
-
-$type     = isset($data['type'])     ? sanitize($data['type'])     : 'contact';
-$name     = isset($data['name'])     ? sanitize($data['name'])     : '';
-$phone    = isset($data['phone'])    ? sanitize($data['phone'])    : '';
-$email    = isset($data['email'])    ? sanitize($data['email'])    : '';
-$service  = isset($data['service'])  ? sanitize($data['service'])  : '';
-$message  = isset($data['message'])  ? sanitize($data['message'])  : '';
-$callDate = isset($data['callDate']) ? sanitize($data['callDate']) : '';
-
-// Basic validation
-if (!$name || !$phone) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Le nom et le numéro de téléphone sont obligatoires.']);
-    exit;
-}
-
-// ── Build Email Content ──
+// Build email content
 if ($type === 'callback') {
     $dateLabel = $callDate ? $callDate : 'Au plus vite';
     $subject = "[Demande de Rappel] {$name} - {$dateLabel}";
@@ -74,26 +163,45 @@ if ($type === 'callback') {
     $body = buildContactHtml($name, $email, $phone, $service, $message);
 }
 
-// ── Send via SMTP ──
+// Send via SMTP
 $result = sendMail(CONTACT_RECEIVER, $subject, $body);
 
 if ($result === true) {
+    if (!$isJson) {
+        header('Location: /contact/?status=success');
+        exit;
+    }
     echo json_encode(['success' => true, 'message' => 'Message envoyé avec succès.']);
 } else {
+    if (!$isJson) {
+        header('Location: /contact/?status=error');
+        exit;
+    }
     http_response_code(500);
     echo json_encode(['error' => 'Erreur lors de l\'envoi: ' . $result]);
 }
 
 // ────────────────────────────────────────────────────────────
-// Functions
+// Helper Functions
 // ────────────────────────────────────────────────────────────
 
-function sanitize($val) {
-    return htmlspecialchars(strip_tags(trim($val)), ENT_QUOTES, 'UTF-8');
+function sanitize($val, $maxLen = 500) {
+    $clean = htmlspecialchars(strip_tags(trim((string)$val)), ENT_QUOTES, 'UTF-8');
+    return function_exists('mb_substr') ? mb_substr($clean, 0, $maxLen, 'UTF-8') : substr($clean, 0, $maxLen);
+}
+
+function hasCrlf($str) {
+    return preg_match('/[\r\n]/', (string)$str);
+}
+
+function logRejection($ip, $reason) {
+    $logFile = sys_get_temp_dir() . '/mc_contact_rejections.log';
+    $anonymizedIp = preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.xxx.xxx', $ip);
+    $entry = date('Y-m-d H:i:s') . " | IP: {$anonymizedIp} | Reason: {$reason}\n";
+    @file_put_contents($logFile, $entry, FILE_APPEND | LOCK_EX);
 }
 
 function sendMail($to, $subject, $htmlBody) {
-    // Use socket-based SMTP (no external dependency)
     $smtp = new SimpleSMTP(SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS);
     return $smtp->send(
         SMTP_FROM_EMAIL,
@@ -145,9 +253,6 @@ function buildCallbackHtml($name, $phone, $formattedDate) {
 HTML;
 }
 
-// ────────────────────────────────────────────────────────────
-// SimpleSMTP — lightweight SMTP client (no composer needed)
-// ────────────────────────────────────────────────────────────
 class SimpleSMTP {
     private $host;
     private $port;
@@ -186,7 +291,7 @@ class SimpleSMTP {
             if (substr($r, 0, 1) > '3') return "Erreur AUTH LOGIN: {$r}";
 
             $r = $this->cmd(base64_encode($this->user));
-            if (substr($r, 0, 1) > '3') return "Erreur identifiant SMTP ({$this->user}): {$r}";
+            if (substr($r, 0, 1) > '3') return "Erreur identifiant SMTP: {$r}";
 
             $r = $this->cmd(base64_encode($this->pass));
             if (substr($r, 0, 1) > '3') return "Erreur mot de passe SMTP: {$r}";

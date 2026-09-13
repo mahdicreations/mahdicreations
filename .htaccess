@@ -43,9 +43,12 @@ RewriteRule ^(.*)$ /$1/index.html [L]
 # ── Custom Error Pages ──
 ErrorDocument 404 /404.html
 
-# ── Gzip Compression ──
+# ── Brotli & Gzip Compression ──
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml
+</IfModule>
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml
 </IfModule>
 
 # ── Identify Versioned Assets for Immutable Caching ──
@@ -74,11 +77,16 @@ ErrorDocument 404 /404.html
   ExpiresByType font/woff "access plus 1 year"
 </IfModule>
 
-# ── Cache-Control Headers ──
+# ── Cache-Control & Compression Headers ──
 <IfModule mod_headers.c>
-  # HTML documents - safe public caching with revalidation
+  # Compression negotiation header
+  <FilesMatch "\.(html|htm|txt|xml|css|js|json|svg)$">
+    Header append Vary Accept-Encoding
+  </FilesMatch>
+
+  # HTML documents - CDN & edge friendly cache with short s-maxage and client revalidation
   <FilesMatch "\.(html|htm)$">
-    Header set Cache-Control "public, max-age=3600, must-revalidate"
+    Header set Cache-Control "public, max-age=0, s-maxage=600, must-revalidate"
   </FilesMatch>
 
   # Unversioned CSS & JS - short revalidation cache
