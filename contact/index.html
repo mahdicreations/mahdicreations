@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact – Mahdi Créations | Agence Web Marrakech</title>
   <meta name="description" content="Contactez Mahdi Créations pour lancer votre projet web. Demandez un devis gratuit ou réservez votre consultation web gratuite. Agence web à Marrakech, Maroc.">
-  <link rel="canonical" href="https://mahdicreations.dev/contact">
-  <link rel="alternate" hreflang="x-default" href="https://mahdicreations.dev/contact">
-  <link rel="alternate" hreflang="fr" href="https://mahdicreations.dev/contact">
-  <link rel="alternate" hreflang="en" href="https://mahdicreations.dev/en/contact">
-  <link rel="alternate" hreflang="ar" href="https://mahdicreations.dev/ar/contact">
+  <link rel="canonical" href="https://mahdicreations.dev/contact/">
+  <link rel="alternate" hreflang="x-default" href="https://mahdicreations.dev/contact/">
+  <link rel="alternate" hreflang="fr" href="https://mahdicreations.dev/contact/">
+  <link rel="alternate" hreflang="en" href="https://mahdicreations.dev/en/contact/">
+  <link rel="alternate" hreflang="ar" href="https://mahdicreations.dev/ar/contact/">
   <meta name="robots" content="index, follow">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -20,12 +20,14 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Contact – Mahdi Créations | Agence Web Marrakech">
   <meta property="og:description" content="Contactez Mahdi Créations pour lancer votre projet web. Demandez un devis gratuit ou réservez votre consultation web gratuite. Agence web à Marrakech, Maroc.">
-  <meta property="og:url" content="https://mahdicreations.dev/contact">
+  <meta property="og:url" content="https://mahdicreations.dev/contact/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://mahdicreations.dev/assets/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="fr_MA">
+  <meta property="og:locale:alternate" content="en_MA">
+  <meta property="og:locale:alternate" content="ar_MA">
   <meta property="og:site_name" content="Mahdi Créations">
 
   <!-- Twitter Card -->
@@ -80,17 +82,20 @@
     }
   </script>
 <script type="application/ld+json">
-{
+  {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "ProfessionalService"],
+  "@type": [
+    "LocalBusiness",
+    "ProfessionalService"
+  ],
   "name": "Mahdi Créations",
   "description": "Agence web à Marrakech spécialisée dans la création de sites web professionnels, le référencement naturel SEO et le marketing digital au Maroc.",
-  "url": "https://mahdicreations.dev",
+  "url": "https://mahdicreations.dev/",
   "logo": "https://mahdicreations.dev/assets/images/logo.png",
   "image": "https://mahdicreations.dev/assets/images/logo.png",
   "telephone": "+212674747589",
   "email": "mahdicreation.group@gmail.com",
-  "priceRange": "MAD",
+  "priceRange": "MAD 5000 - MAD 60000",
   "openingHours": "Mo-Fr 09:00-18:00",
   "address": {
     "@type": "PostalAddress",
@@ -104,9 +109,13 @@
     "latitude": 31.6295,
     "longitude": -7.9811
   },
-  "sameAs": ["https://instagram.com/mahdicreations", "https://facebook.com/mahdicreations", "https://linkedin.com/company/mahdicreations"]
+  "sameAs": [
+    "https://instagram.com/mahdicreations",
+    "https://facebook.com/mahdicreations",
+    "https://linkedin.com/company/mahdicreations"
+  ]
 }
-</script>
+  </script>
 </head>
 <body class="min-h-full flex flex-col bg-dark text-text-white font-body selection:bg-gold selection:text-dark">
 
@@ -233,21 +242,21 @@
         </div>
         <div class="reveal">
           <div id="contact-form-wrapper">
-            <form id="contact-form" class="bg-dark-card border border-gold/15 rounded-3xl p-8 flex flex-col gap-6 shadow-xl relative" novalidate>
+            <form id="contact-form" class=">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="flex flex-col gap-2">
                   <label for="contact-name" class="form-label">Nom complet *</label>
-                  <input id="contact-name" type="text" placeholder="Ex: Youssef El Alami" class="form-input">
+                  <input id="contact-name" type="text" placeholder="Ex: Youssef El Alami" class="form-input" required aria-required="true" aria-invalid="false">
                 </div>
                 <div class="flex flex-col gap-2">
                   <label for="contact-email" class="form-label">Adresse email *</label>
-                  <input id="contact-email" type="email" placeholder="Ex: youssef@gmail.com" class="form-input">
+                  <input id="contact-email" type="email" placeholder="Ex: youssef@gmail.com" class="form-input" required aria-required="true" aria-invalid="false">
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="flex flex-col gap-2">
                   <label for="contact-phone" class="form-label">Téléphone / WhatsApp *</label>
-                  <input id="contact-phone" type="tel" placeholder="Ex: +212 6 12 34 56 78" class="form-input">
+                  <input id="contact-phone" type="tel" placeholder="Ex: +212 6 12 34 56 78" class="form-input" required aria-required="true" aria-invalid="false">
                 </div>
                 <div class="flex flex-col gap-2">
                   <label for="contact-service" class="form-label">Service Souhaité *</label>
@@ -265,7 +274,7 @@
               </div>
               <div class="flex flex-col gap-2">
                 <label for="contact-message" class="form-label">Parlez-nous de votre projet *</label>
-                <textarea id="contact-message" rows="5" placeholder="Décrivez brièvement vos besoins, vos objectifs et vos délais..." class="form-input"></textarea>
+                <textarea id="contact-message" rows="5" placeholder="Décrivez brièvement vos besoins, vos objectifs et vos délais..." class="form-input" required aria-required="true" aria-invalid="false"></textarea>
               </div>
               <div id="contact-error" class="hidden text-sm p-3 text-center rounded-xl" style="display:none;color:#f87171;background:rgba(127,29,29,0.2);border:1px solid rgba(239,68,68,0.3)"></div>
               <button type="submit" class="w-full bg-gold-gradient text-dark font-body font-semibold text-base py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2 hover:shadow-gold/20 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
@@ -320,7 +329,7 @@
         <div class="reveal">
           
 <div class="callback-wrapper">
-  <form class="callback-form bg-dark-card border border-gold/15 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col gap-4" action="/contact/send-mail.php" method="POST" novalidate>
+  <form class="callback-form bg-dark-card border border-gold/15 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col gap-4">
     <input type="hidden" name="type" value="callback">
     <div>
       <h3 class="font-display font-semibold text-2xl text-text-white mb-1">Laissez-nous vous contacter</h3>
@@ -331,21 +340,21 @@
       <label class="form-label" for="cb-name-contact">Nom complet *</label>
       <div class="relative">
         <span class="absolute start-3 top-3.5 opacity-60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-        <input type="text" data-field="name" name="name" placeholder="Ex: Youssef El Alami" class="form-input" style="padding-left:2.5rem" id="cb-name-contact">
+        <input type="text" data-field="name" required aria-required="true" aria-invalid="false" name="name" placeholder="Ex: Youssef El Alami" class="form-input" style="padding-left:2.5rem" id="cb-name-contact">
       </div>
     </div>
     <div class="flex flex-col gap-1.5">
       <label class="form-label " for="cb-phone-contact">Numéro de téléphone *</label>
       <div class="relative">
         <span class="absolute start-3 top-3.5 opacity-60"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-        <input type="tel" data-field="phone" name="phone" placeholder="Ex: 0612345678" class="form-input" style="padding-left:2.5rem" id="cb-phone-contact">
+        <input type="tel" data-field="phone" required aria-required="true" aria-invalid="false" name="phone" placeholder="Ex: 0612345678" class="form-input" style="padding-left:2.5rem" id="cb-phone-contact">
       </div>
     </div>
     <div class="flex flex-col gap-1.5">
       <label class="form-label " for="cb-date-contact">Date & Heure souhaitées *</label>
       <div class="relative">
         <span class="absolute start-3 top-3.5 opacity-60"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>
-        <input type="datetime-local" data-field="callDate" name="callDate" class="form-input" style="padding-left:2.5rem" id="cb-date-contact">
+        <input type="datetime-local" data-field="callDate" required aria-required="true" aria-invalid="false" name="callDate" class="form-input" style="padding-left:2.5rem" id="cb-date-contact">
       </div>
     </div>
     <button type="submit" class="w-full bg-dark text-white font-body font-semibold text-sm py-3 rounded-xl shadow-md hover:bg-dark/95 transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2">
@@ -469,14 +478,31 @@
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6aa35524279bff344394a6f4/1k270963a';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+function loadTawk() {
+  if (window._tawkLoaded) return;
+  window._tawkLoaded = true;
+  var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+  s1.async = true;
+  s1.src = 'https://embed.tawk.to/6aa35524279bff344394a6f4/1k270963a';
+  s1.charset = 'UTF-8';
+  s1.setAttribute('crossorigin', '*');
+  s0.parentNode.insertBefore(s1, s0);
+}
+function scheduleTawk() {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadTawk, { timeout: 3500 });
+  } else {
+    setTimeout(loadTawk, 2000);
+  }
+}
+['scroll', 'keydown', 'pointerdown', 'touchstart'].forEach(function(evt) {
+  window.addEventListener(evt, loadTawk, { once: true, passive: true });
+});
+if (document.readyState === 'complete') {
+  scheduleTawk();
+} else {
+  window.addEventListener('load', scheduleTawk, { once: true });
+}
 </script>
 <!--End of Tawk.to Script-->
 </body>

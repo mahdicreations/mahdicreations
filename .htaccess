@@ -23,14 +23,16 @@ RewriteCond %{HTTP_HOST} ^mahdicreations\.dev$ [NC]
 RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
 
 # ── 4. 301 Redirects (Legacy Service URLs - No Trailing Slash Policy) ──
-RewriteRule ^creation-site-web/?$ /services/creation-web [R=301,L]
-RewriteRule ^referencement-seo/?$ /services/seo [R=301,L]
-RewriteRule ^marketing-digital/?$ /services/marketing [R=301,L]
-RewriteRule ^blog/services/marketing-riads-hotels-maroc/?$ /blog/marketing-digital-riads-hotels-maroc [R=301,L]
+RewriteRule ^creation-site-web/?$ /services/creation-web/ [R=301,L]
+RewriteRule ^referencement-seo/?$ /services/seo/ [R=301,L]
+RewriteRule ^marketing-digital/?$ /services/marketing/ [R=301,L]
+RewriteRule ^blog/services/marketing-riads-hotels-maroc/?$ /blog/marketing-digital-riads-hotels-maroc/ [R=301,L]
 
-# ── 5. Consistent Trailing-Slash Policy (Enforce NO Trailing Slash on URLs) ──
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)/$ /$1 [R=301,L]
+# ── 5. Consistent Trailing-Slash Policy (Enforce Trailing Slash on URLs) ──
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.
+RewriteRule ^(.*)$ /$1/ [R=301,L]
 
 # ── 6. Clean URLs: Serve index.html for extensionless directory paths ──
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -74,10 +76,9 @@ ErrorDocument 404 /404.html
 
 # ── Cache-Control Headers ──
 <IfModule mod_headers.c>
-  # HTML documents - never cache as immutable; must revalidate
+  # HTML documents - safe public caching with revalidation
   <FilesMatch "\.(html|htm)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
-    Header set Pragma "no-cache"
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
   </FilesMatch>
 
   # Unversioned CSS & JS - short revalidation cache
