@@ -7,7 +7,7 @@
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.min.css --minify && tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
     "build:js": "terser assets/js/main.js -c -m -o assets/js/main.min.js --source-map \"url=main.min.js.map\"",
     "dev": "concurrently \"npm:dev:css\" \"npm:serve\"",
-    "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.min.css --watch",
     "serve": "serve . -l 4000"
   },
   "devDependencies": {

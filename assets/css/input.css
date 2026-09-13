@@ -193,8 +193,8 @@ main {
   display: flex;
   width: max-content;
   animation: marquee 25s linear infinite;
+  will-change: transform;
 }
-.animate-marquee:hover { animation-play-state: paused; }
 
 /* ── No Scrollbar ── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -418,3 +418,145 @@ section:first-of-type .reveal {
   object-fit: cover;
   height: 320px;
 }
+
+/* ── RTL Arabic Typography (Tech & Modern UI) ── */
+[dir="rtl"], html[lang="ar"] {
+  letter-spacing: normal !important;
+  word-spacing: 0.08em;
+}
+
+/* Base Body: IBM Plex Sans Arabic (400) */
+[dir="rtl"] body, html[lang="ar"] body {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.8;
+  word-spacing: 0.08em;
+}
+
+/* Normal Texts, Body, Paragraphs, Lists, Spans: IBM Plex Sans Arabic (400) */
+[dir="rtl"] .font-body, html[lang="ar"] .font-body,
+[dir="rtl"] p, html[lang="ar"] p,
+[dir="rtl"] li, html[lang="ar"] li,
+[dir="rtl"] small, html[lang="ar"] small,
+[dir="rtl"] blockquote, html[lang="ar"] blockquote,
+[dir="rtl"] span:not(button span):not(.btn span):not(h1 span):not(h2 span):not(h3 span):not(h4 span),
+html[lang="ar"] span:not(button span):not(.btn span):not(h1 span):not(h2 span):not(h3 span):not(h4 span) {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+}
+
+/* Paragraphs & Article Content with line-height: 1.8 */
+[dir="rtl"] p, html[lang="ar"] p,
+[dir="rtl"] .blog-content p, html[lang="ar"] .blog-content p {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.8 !important;
+  word-spacing: 0.08em;
+}
+
+/* Strong / Bold inline text */
+[dir="rtl"] strong, html[lang="ar"] strong,
+[dir="rtl"] b, html[lang="ar"] b,
+[dir="rtl"] p strong, html[lang="ar"] p strong,
+[dir="rtl"] .blog-content p strong, html[lang="ar"] .blog-content p strong {
+  font-weight: 700;
+}
+
+/* Dark Blog Content Colors */
+[dir="rtl"] .blog-content p, html[lang="ar"] .blog-content p {
+  color: var(--color-text-muted);
+}
+[dir="rtl"] .blog-content strong, html[lang="ar"] .blog-content strong,
+[dir="rtl"] .blog-content p strong, html[lang="ar"] .blog-content p strong {
+  color: var(--color-text-white);
+}
+
+/* ── Light Sections (bg-cream) & White Cards Text Contrast ── */
+[dir="rtl"] .bg-cream, html[lang="ar"] .bg-cream {
+  color: var(--color-dark);
+}
+[dir="rtl"] .bg-cream p, html[lang="ar"] .bg-cream p,
+[dir="rtl"] .bg-cream .bg-white p, html[lang="ar"] .bg-cream .bg-white p {
+  color: rgba(10, 10, 10, 0.75) !important;
+}
+[dir="rtl"] .bg-cream .text-dark\/80, html[lang="ar"] .bg-cream .text-dark\/80 {
+  color: rgba(10, 10, 10, 0.85) !important;
+}
+[dir="rtl"] .bg-cream strong, html[lang="ar"] .bg-cream strong,
+[dir="rtl"] .bg-cream b, html[lang="ar"] .bg-cream b,
+[dir="rtl"] .bg-cream .bg-white strong, html[lang="ar"] .bg-cream .bg-white strong {
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+}
+
+/* ── Section Eyebrow Labels (خدماتنا، رؤيتنا، أعمالنا، رواد في المجال الرقمي، إلخ) ── */
+[dir="rtl"] span.uppercase, html[lang="ar"] span.uppercase,
+[dir="rtl"] p.uppercase, html[lang="ar"] p.uppercase,
+[dir="rtl"] .section-badge, html[lang="ar"] .section-badge {
+  font-size: 1.05rem !important; /* ~17px - واضحة وكبيرة وبارزة */
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.5 !important;
+  display: inline-block;
+}
+
+[dir="rtl"] .bg-cream span.uppercase, html[lang="ar"] .bg-cream span.uppercase {
+  color: var(--color-gold-deep) !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+}
+
+/* Nav Links: IBM Plex Sans Arabic (Bold - 700) */
+[dir="rtl"] nav a, html[lang="ar"] nav a,
+[dir="rtl"] #mobile-nav a, html[lang="ar"] #mobile-nav a,
+[dir="rtl"] header a[data-nav-link], html[lang="ar"] header a[data-nav-link] {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.06em;
+}
+
+/* Buttons & CTAs: IBM Plex Sans Arabic (500) */
+[dir="rtl"] button, html[lang="ar"] button,
+[dir="rtl"] .btn, html[lang="ar"] .btn,
+[dir="rtl"] a.rounded-full, html[lang="ar"] a.rounded-full {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.06em;
+}
+
+/* Form Controls: IBM Plex Sans Arabic */
+[dir="rtl"] .form-input, [dir="rtl"] .form-label,
+html[lang="ar"] .form-input, html[lang="ar"] .form-label,
+[dir="rtl"] input, html[lang="ar"] input,
+[dir="rtl"] textarea, html[lang="ar"] textarea,
+[dir="rtl"] select, html[lang="ar"] select {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+[dir="rtl"] .form-label, html[lang="ar"] .form-label {
+  font-weight: 500 !important;
+}
+
+/* ── Headings (H1, H2, H3, H4, H5, H6, .font-display): Readex Pro (700) ALWAYS ── */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] h5, html[lang="ar"] h6,
+[dir="rtl"] .font-display, html[lang="ar"] .font-display,
+[dir="rtl"] .blog-content h2, [dir="rtl"] .blog-content h3, [dir="rtl"] .blog-content h4,
+html[lang="ar"] .blog-content h2, html[lang="ar"] .blog-content h3, html[lang="ar"] .blog-content h4,
+html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="ar"] h3.font-semibold {
+  font-family: 'Readex Pro', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.06em;
+  line-height: 1.35;
+}
+
+
+
+
+

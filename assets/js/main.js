@@ -87,6 +87,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Language Switcher Dropdown (Click, Touch & Keyboard Support) ──
+  const langButtons = document.querySelectorAll(
+    'button[aria-label*="langue" i], button[aria-label*="language" i], button[aria-label*="اللغة"]'
+  );
+  langButtons.forEach((btn) => {
+    const parent = btn.closest('.group');
+    const menu = parent ? parent.querySelector('div[dir="ltr"]') : null;
+    if (!menu) return;
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+      menu.classList.toggle('opacity-100');
+      menu.classList.toggle('visible');
+      menu.classList.toggle('opacity-0');
+      menu.classList.toggle('invisible');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    langButtons.forEach((btn) => {
+      const parent = btn.closest('.group');
+      const menu = parent ? parent.querySelector('div[dir="ltr"]') : null;
+      if (menu && parent && !parent.contains(e.target)) {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('opacity-100', 'visible');
+        menu.classList.add('opacity-0', 'invisible');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      langButtons.forEach((btn) => {
+        const parent = btn.closest('.group');
+        const menu = parent ? parent.querySelector('div[dir="ltr"]') : null;
+        if (menu) {
+          btn.setAttribute('aria-expanded', 'false');
+          menu.classList.remove('opacity-100', 'visible');
+          menu.classList.add('opacity-0', 'invisible');
+        }
+      });
+    }
+  });
+
   // ── 3. Scroll to Top Button ──
   const scrollTopBtn = document.getElementById('scroll-top');
   if (scrollTopBtn) {

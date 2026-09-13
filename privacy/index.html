@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" dir="ltr" class="scroll-smooth">
 <head>
 
   <meta charset="UTF-8">
@@ -7,6 +7,10 @@
   <title>Politique de confidentialité | Mahdi Créations</title>
   <meta name="description" content="Politique de confidentialité de Mahdi Créations, agence web à Marrakech. Informations transparentes sur la collecte et la protection de vos données personnelles."utilisation et la protection de vos données personnelles.">
   <link rel="canonical" href="https://mahdicreations.dev/privacy">
+  <link rel="alternate" hreflang="x-default" href="https://mahdicreations.dev/privacy">
+  <link rel="alternate" hreflang="fr" href="https://mahdicreations.dev/privacy">
+  <link rel="alternate" hreflang="en" href="https://mahdicreations.dev/en/privacy">
+  <link rel="alternate" hreflang="ar" href="https://mahdicreations.dev/ar/privacy">
   <meta name="robots" content="index, follow">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -43,7 +47,7 @@
   </noscript>
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="/assets/css/style.min.css?v=6">
+  <link rel="stylesheet" href="/assets/css/style.min.css?v=10">
 
   <!-- Google Analytics (Deferred to Idle after Window Load) -->
   <script>
@@ -112,6 +116,29 @@
       <a href="/contact" class="bg-gold-gradient text-dark font-body font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg hover:shadow-gold/20 transition-all hover:scale-[1.03] active:scale-[0.97] inline-block">
         Demander un devis
       </a>
+    </div>
+
+    
+    <!-- Language Switcher -->
+    <div class="relative group ml-4 lg:ml-6 flex items-center">
+      <button aria-label="Sélecteur de langue" aria-expanded="false" class="flex items-center gap-2 text-sm font-body text-text-white hover:text-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-md p-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        <span class="sr-only lg:not-sr-only lg:inline-block">FR</span>
+      </button>
+      <div class="absolute right-0 top-full mt-2 w-40 bg-dark-card border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden" dir="ltr">
+        <a href="/privacy" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-white" hreflang="fr" aria-current="page">
+          <span class="text-lg leading-none" aria-hidden="true">🇫🇷</span>
+          <span>Français</span>
+        </a>
+        <a href="/en/privacy" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-text-muted hover:text-white" hreflang="en" >
+          <span class="text-lg leading-none" aria-hidden="true">🇬🇧</span>
+          <span>English</span>
+        </a>
+        <a href="/ar/privacy" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-text-muted hover:text-white" hreflang="ar" >
+          <span class="text-lg leading-none" aria-hidden="true">🇲🇦</span>
+          <span dir="rtl" class="font-body w-full text-right">العربية</span>
+        </a>
+      </div>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -206,6 +233,7 @@
     <div class="flex flex-col gap-6">
       <h3 class="font-display font-medium text-lg text-gold">Nos Services</h3>
       <ul class="flex flex-col gap-3 font-body text-sm text-text-muted">
+        <li><a href="/services/ia-souveraine" class="text-gold font-medium hover:text-gold-light transition-colors">IA Souveraine au Maroc</a></li>
         <li><a href="/services/creation-web" class="hover:text-gold transition-colors">Création de Sites Web</a></li>
         <li><a href="/services" class="hover:text-gold transition-colors">Développement Web sur Mesure</a></li>
         <li><a href="/services" class="hover:text-gold transition-colors">Applications Web & SaaS</a></li>
@@ -262,7 +290,7 @@
 </footer>
 
 <!-- Scroll To Top -->
-<button id="scroll-top" class="fixed bottom-6 right-6 z-50 bg-gold text-dark rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-gold/20 hover:bg-gold-light transition-all" aria-label="Retour en haut de page">
+<button id="scroll-top" class="fixed bottom-6 end-6 z-50 bg-gold text-dark rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-gold/20 hover:bg-gold-light transition-all" aria-label="Retour en haut de page">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 

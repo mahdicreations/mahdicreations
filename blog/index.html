@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" dir="ltr" class="scroll-smooth">
 <head>
 
   <meta charset="UTF-8">
@@ -7,6 +7,10 @@
   <title>Blog Web, SEO & Marketing Digital au Maroc | Mahdi Créations</title>
   <meta name="description" content="Guides, conseils et actualités sur la création de sites web, le référencement SEO et le marketing digital au Maroc par Mahdi Créations, agence web Marrakech.">
   <link rel="canonical" href="https://mahdicreations.dev/blog">
+  <link rel="alternate" hreflang="x-default" href="https://mahdicreations.dev/blog">
+  <link rel="alternate" hreflang="fr" href="https://mahdicreations.dev/blog">
+  <link rel="alternate" hreflang="en" href="https://mahdicreations.dev/en/blog">
+  <link rel="alternate" hreflang="ar" href="https://mahdicreations.dev/ar/blog">
   <meta name="robots" content="index, follow">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -43,7 +47,7 @@
   </noscript>
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="/assets/css/style.min.css?v=6">
+  <link rel="stylesheet" href="/assets/css/style.min.css?v=10">
 
   <!-- Google Analytics (Deferred to Idle after Window Load) -->
   <script>
@@ -141,6 +145,29 @@
       </a>
     </div>
 
+    
+    <!-- Language Switcher -->
+    <div class="relative group ml-4 lg:ml-6 flex items-center">
+      <button aria-label="Sélecteur de langue" aria-expanded="false" class="flex items-center gap-2 text-sm font-body text-text-white hover:text-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-md p-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        <span class="sr-only lg:not-sr-only lg:inline-block">FR</span>
+      </button>
+      <div class="absolute right-0 top-full mt-2 w-40 bg-dark-card border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden" dir="ltr">
+        <a href="/blog" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-white" hreflang="fr" aria-current="page">
+          <span class="text-lg leading-none" aria-hidden="true">🇫🇷</span>
+          <span>Français</span>
+        </a>
+        <a href="/en/blog" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-text-muted hover:text-white" hreflang="en" >
+          <span class="text-lg leading-none" aria-hidden="true">🇬🇧</span>
+          <span>English</span>
+        </a>
+        <a href="/ar/blog" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-sm text-text-muted hover:text-white" hreflang="ar" >
+          <span class="text-lg leading-none" aria-hidden="true">🇲🇦</span>
+          <span dir="rtl" class="font-body w-full text-right">العربية</span>
+        </a>
+      </div>
+    </div>
+
     <!-- Mobile Menu Button -->
     <button id="menu-btn" class="lg:hidden text-text-muted hover:text-gold p-1 transition-colors" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-nav">
       <span id="menu-icon">
@@ -192,7 +219,7 @@
     <div class="h-48 sm:h-56 relative overflow-hidden bg-dark">
       <picture><source type="image/webp" srcset="/assets/images/blog-hero-creation-web-480.webp 480w, /assets/images/blog-hero-creation-web-768.webp 768w, /assets/images/blog-hero-creation-web.webp 1024w" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"><img src="/assets/images/blog-hero-creation-web.png" alt="Créer un site web professionnel au Maroc : combien ça coûte en 2026 ?" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" loading="eager" decoding="async" width="600" height="224"></picture>
       <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85"></div>
-      <div class="absolute top-4 left-6">
+      <div class="absolute top-4 start-6">
         <span class="bg-gold/90 text-dark text-[10px] font-body font-bold uppercase tracking-wider px-3 py-1 rounded-full">Création Web</span>
       </div>
     </div>
@@ -219,7 +246,7 @@
     <div class="h-48 sm:h-56 relative overflow-hidden bg-dark">
       <picture><source type="image/webp" srcset="/assets/images/blog-hero-reseaux-sociaux-480.webp 480w, /assets/images/blog-hero-reseaux-sociaux-768.webp 768w, /assets/images/blog-hero-reseaux-sociaux.webp 1024w" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"><img src="/assets/images/blog-hero-reseaux-sociaux.png" alt="Gestion des réseaux sociaux au Maroc : faut-il confier ça à une agence ?" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" loading="eager" decoding="async" width="600" height="224"></picture>
       <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85"></div>
-      <div class="absolute top-4 left-6">
+      <div class="absolute top-4 start-6">
         <span class="bg-gold/90 text-dark text-[10px] font-body font-bold uppercase tracking-wider px-3 py-1 rounded-full">Réseaux Sociaux</span>
       </div>
     </div>
@@ -246,7 +273,7 @@
     <div class="h-48 sm:h-56 relative overflow-hidden bg-dark">
       <picture><source type="image/webp" srcset="/assets/images/blog-hero-seo-480.webp 480w, /assets/images/blog-hero-seo-768.webp 768w, /assets/images/blog-hero-seo.webp 1024w" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"><img src="/assets/images/blog-hero-seo.png" alt="Référencement naturel au Maroc : comment apparaître en 1ère page Google ?" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" loading="eager" decoding="async" width="600" height="224"></picture>
       <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85"></div>
-      <div class="absolute top-4 left-6">
+      <div class="absolute top-4 start-6">
         <span class="bg-gold/90 text-dark text-[10px] font-body font-bold uppercase tracking-wider px-3 py-1 rounded-full">SEO</span>
       </div>
     </div>
@@ -273,7 +300,7 @@
     <div class="h-48 sm:h-56 relative overflow-hidden bg-dark">
       <picture><source type="image/webp" srcset="/assets/images/blog-hero-ads-480.webp 480w, /assets/images/blog-hero-ads-768.webp 768w, /assets/images/blog-hero-ads.webp 1024w" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"><img src="/assets/images/blog-hero-ads.png" alt="Google Ads et Facebook Ads au Maroc : quel budget pour avoir des résultats ?" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" loading="lazy" decoding="async" width="600" height="224"></picture>
       <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85"></div>
-      <div class="absolute top-4 left-6">
+      <div class="absolute top-4 start-6">
         <span class="bg-gold/90 text-dark text-[10px] font-body font-bold uppercase tracking-wider px-3 py-1 rounded-full">Publicité Digitale</span>
       </div>
     </div>
@@ -300,7 +327,7 @@
     <div class="h-48 sm:h-56 relative overflow-hidden bg-dark">
       <picture><source type="image/webp" srcset="/assets/images/blog-hero-hotels-480.webp 480w, /assets/images/blog-hero-hotels-768.webp 768w, /assets/images/blog-hero-hotels.webp 1024w" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"><img src="/assets/images/blog-hero-hotels.png" alt="Marketing digital pour riads et hôtels au Maroc : les stratégies qui marchent" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" loading="lazy" decoding="async" width="600" height="224"></picture>
       <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85"></div>
-      <div class="absolute top-4 left-6">
+      <div class="absolute top-4 start-6">
         <span class="bg-gold/90 text-dark text-[10px] font-body font-bold uppercase tracking-wider px-3 py-1 rounded-full">Tourisme & Hôtellerie</span>
       </div>
     </div>
@@ -327,7 +354,7 @@
     <div class="h-48 sm:h-56 relative overflow-hidden bg-dark">
       <picture><source type="image/webp" srcset="/assets/images/blog-hero-branding-480.webp 480w, /assets/images/blog-hero-branding-768.webp 768w, /assets/images/blog-hero-branding.webp 1024w" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"><img src="/assets/images/blog-hero-branding.png" alt="Logo, charte graphique, branding : pourquoi votre image de marque compte au Maroc" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" loading="lazy" decoding="async" width="600" height="224"></picture>
       <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-transparent to-transparent opacity-85"></div>
-      <div class="absolute top-4 left-6">
+      <div class="absolute top-4 start-6">
         <span class="bg-gold/90 text-dark text-[10px] font-body font-bold uppercase tracking-wider px-3 py-1 rounded-full">Branding</span>
       </div>
     </div>
@@ -382,6 +409,7 @@
     <div class="flex flex-col gap-6">
       <h3 class="font-display font-medium text-lg text-gold">Nos Services</h3>
       <ul class="flex flex-col gap-3 font-body text-sm text-text-muted">
+        <li><a href="/services/ia-souveraine" class="text-gold font-medium hover:text-gold-light transition-colors">IA Souveraine au Maroc</a></li>
         <li><a href="/services/creation-web" class="hover:text-gold transition-colors">Création de Sites Web</a></li>
         <li><a href="/services" class="hover:text-gold transition-colors">Développement Web sur Mesure</a></li>
         <li><a href="/services" class="hover:text-gold transition-colors">Applications Web & SaaS</a></li>
@@ -438,7 +466,7 @@
 </footer>
 
 <!-- Scroll To Top -->
-<button id="scroll-top" class="fixed bottom-6 right-6 z-50 bg-gold text-dark rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-gold/20 hover:bg-gold-light transition-all" aria-label="Retour en haut de page">
+<button id="scroll-top" class="fixed bottom-6 end-6 z-50 bg-gold text-dark rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-gold/20 hover:bg-gold-light transition-all" aria-label="Retour en haut de page">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
