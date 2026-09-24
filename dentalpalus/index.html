@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>ELWAFA DENTAL | Laboratoire Dentaire Esthétique & Prothèses à Marrakech</title>
+    <meta name="description" content="ELWAFA DENTAL est le laboratoire dentaire de référence à Marrakech pour la dentisterie esthétique. Solutions prothétiques conjointes de haute précision : facettes Emax, couronnes zirconium, orthodontie invisible et blanchiment dentaire.">
+    <meta name="keywords" content="laboratoire dentaire Marrakech, dentisterie esthétique Marrakech, prothèses dentaires Marrakech, facettes dentaires, orthodontie invisible, blanchiment dentaire, zirconium dentaire, Emax, couronne céramique, ALL on X, prothèse dentaire Maroc">
+    <meta name="author" content="ELWAFA DENTAL">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for Social Networks -->
+    <meta property="og:title" content="ELWAFA DENTAL | Laboratoire Dentaire Esthétique & Prothèses à Marrakech">
+    <meta property="og:description" content="Solutions prothétiques d'excellence pour cabinets dentaires. Spécialiste de la dentisterie esthétique de haute précision.">
+    <meta property="og:image" content="assets/hero_dental_veneer.png">
+    <meta property="og:url" content="https://www.elwafadental.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Fonts: Cormorant Garamond (Serif Premium) & Montserrat (Sans-Serif Moderne) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data (JSON-LD) for Local Business SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ELWAFA DENTAL",
+      "image": "assets/hero_dental_veneer.png",
+      "@id": "https://www.elwafadental.com/#laboratoire",
+      "url": "https://www.elwafadental.com",
+      "telephone": "+212665042005",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lot ayour N° 237 azzouzia",
+        "addressLocality": "Marrakech",
+        "postalCode": "40000",
+        "addressCountry": "MA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "31.6582",
+        "longitude": "-8.0461"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/elwafadental",
+        "https://www.linkedin.com/company/elwafadental"
+      ],
+      "priceRange": "$$$"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <!-- Logo area in Header -->
+            <a href="#accueil" class="logo" aria-label="ELWAFA DENTAL Accueil">
+                <img src="assets/logo.png" alt="DENTAL PLUS" class="logo-img">
+            </a>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <!-- Expanded Navigation Menu -->
+            <nav class="nav-menu" id="navMenu">
+                <!-- Mobile Only Logo inside Slide-out Menu Drawer -->
+                <div class="menu-logo-mobile">
+                    <img src="assets/logo.png" alt="DENTAL PLUS" class="logo-img-mobile">
+                </div>
+                <ul>
+                    <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                    <li><a href="#apropos" class="nav-link">À propos</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#technologie" class="nav-link">Technologie</a></li>
+                    <li><a href="#cas-cliniques" class="nav-link">Cas Cliniques</a></li>
+                    <li><a href="#choisir" class="nav-link">Pourquoi nous</a></li>
+                    <li><a href="#formations" class="nav-link">Formations</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Header CTAs (Desktop only) -->
+            <div class="header-actions">
+                <button class="btn btn-outline btn-sm open-booking-modal">Prendre RDV</button>
+                <a href="tel:0665042005" class="btn btn-gold btn-sm">Nous contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-section">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">Laboratoire de Dentisterie Esthétique de Haute Précision</span>
+                <h1 class="hero-title">L’excellence du laboratoire dentaire esthétique</h1>
+                <p class="hero-subtitle">ELWAFA DENTAL accompagne les cabinets dentaires avec des solutions performantes, esthétiques et précises pour sublimer chaque sourire.</p>
+                <div class="hero-ctas">
+                    <button class="btn btn-gold open-booking-modal">Prendre rendez-vous</button>
+                    <a href="#services" class="btn btn-outline">Découvrir nos services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-frame">
+                    <img src="assets/hero_dental_veneer.png" alt="Conception de prothèse esthétique premium chez ELWAFA DENTAL" class="visual-image">
+                    <div class="visual-accent"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <a href="#apropos" aria-label="Défiler vers le bas">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section (À propos) -->
+    <section id="apropos" class="about-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Notre Histoire & Valeurs</span>
+                <h2 class="section-title">L'Art et la Science du Sourire</h2>
+                <div class="gold-divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text-content">
+                    <p class="about-lead">
+                        Né de la passion de l’art dentaire et de l’exigence technologique, <strong>ELWAFA DENTAL</strong> est un laboratoire d'excellence spécialisé en dentisterie esthétique à Marrakech.
+                    </p>
+                    <p class="about-body">
+                        Nous offrons à tous les cabinets dentaires les solutions les plus performantes pour les prothèses conjointes. Notre équipe est composée de professionnels expérimentés et passionnés par leur métier. Nous mettons en œuvre des protocoles numériques avancés alliés à un geste technique minutieux afin de garantir une précision microscopique.
+                    </p>
+                    <p class="about-body">
+                        Notre vocation est claire : collaborer main dans la main avec les praticiens pour offrir aux patients un sourire d'un naturel absolu, parfaitement adapté à leur morphologie et à la hauteur de leurs attentes les plus élevées.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Dentisterie Esthétique</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Numérique</span>
+                            <span class="stat-label">Conception CAO/FAO</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Marrakech</span>
+                            <span class="stat-label">Proximité & Réactivité</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-image-wrapper">
+                        <svg class="about-illustration-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="200" cy="200" r="180" stroke="#C5A059" stroke-width="1" stroke-dasharray="5 5" opacity="0.3"/>
+                            <circle cx="200" cy="200" r="140" stroke="#C5A059" stroke-width="1" opacity="0.15"/>
+                            <path d="M120,200 Q200,100 280,200 T360,200" stroke="url(#goldGradient)" stroke-width="1.5" opacity="0.4"/>
+                            <path d="M 160,130 C 160,110 185,100 200,120 C 215,100 240,110 240,130 C 240,210 215,260 200,280 C 185,260 160,210 160,130 Z" stroke="url(#goldGradient)" stroke-width="3" fill="none" filter="url(#glow)"/>
+                            <line x1="200" y1="50" x2="200" y2="350" stroke="#C5A059" stroke-width="0.5" opacity="0.2" stroke-dasharray="2 2"/>
+                            <line x1="50" y1="200" x2="350" y2="200" stroke="#C5A059" stroke-width="0.5" opacity="0.2" stroke-dasharray="2 2"/>
+                        </svg>
+                        <div class="experience-badge">
+                            <span class="badge-years">Esthétique</span>
+                            <span class="badge-text">Haute Précision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Notre Catalogue Technique</span>
+                <h2 class="section-title">Prestations & Solutions Prothétiques</h2>
+                <div class="gold-divider"></div>
+                <p class="section-intro">Chaque restauration est illustrée et façonnée pour répondre aux plus hautes exigences esthétiques et fonctionnelles.</p>
+            </div>
+
+            <!-- Service Filter Tabs -->
+            <div class="services-filter">
+                <button class="filter-btn active" data-filter="all">Toutes les solutions</button>
+                <button class="filter-btn" data-filter="esthetic">Facettes & Esthétique</button>
+                <button class="filter-btn" data-filter="prosthesis">Prothèses & Couronnes</button>
+                <button class="filter-btn" data-filter="ortho">Orthodontie & Diagnostic</button>
+            </div>
+
+            <!-- Services Grid with Photos for Every Service Card -->
+            <div class="services-grid" id="servicesGrid">
+                
+                <!-- Service 1: Facette feldspathique -->
+                <div class="service-card" data-category="esthetic">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_veneer.png" alt="Facette feldspathique artisanale" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Premium</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 1 h (Clinique)</span>
+                        </div>
+                        <h3 class="service-title">Facette feldspathique</h3>
+                        <p class="service-description">Le sommet de la dentisterie cosmétique. Confection artisanale multicouches sur feuille de platine, offrant une finesse extrême (jusqu'à 0,3 mm) et des propriétés optiques reproduisant fidèlement l'émail naturel.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Facette feldspathique">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Facette disilicate de lithium -->
+                <div class="service-card" data-category="esthetic">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_veneer.png" alt="Facette disilicate de lithium IPS e.max" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Esthétique</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 1 h (Clinique)</span>
+                        </div>
+                        <h3 class="service-title">Facette disilicate de lithium</h3>
+                        <p class="service-description">Prothèse haute résistance (IPS e.max) alliant dureté mécanique exceptionnelle et translucidité remarquable. Idéale pour le secteur antérieur, usinée en CAO/FAO puis maquillée ou stratifiée à la main.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Facette disilicate de lithium">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Zirconium -->
+                <div class="service-card" data-category="prosthesis">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_zirconia.png" alt="Couronne zirconium multicouche" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Biocompatible</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 1 h (Clinique)</span>
+                        </div>
+                        <h3 class="service-title">Zirconium</h3>
+                        <p class="service-description">Restaurations en oxyde de zirconium (couronnes et bridges). Alliance idéale entre solidité structurelle à toute épreuve (secteur postérieur) et intégration biologique optimale avec dégradé de teinte multicouche.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Zirconium">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Kit blanchiment dentaire -->
+                <div class="service-card" data-category="esthetic">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_ortho.png" alt="Gouttières thermoformées sur mesure" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Soin</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 50 min</span>
+                        </div>
+                        <h3 class="service-title">Kit blanchiment dentaire</h3>
+                        <p class="service-description">Conception de gouttières thermoformées sur mesure après numérisation 3D des arcades. Garantit une application homogène et sécurisée du gel d'éclaircissement dentaire pour un traitement à domicile.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Kit blanchiment dentaire">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5: Photographie -->
+                <div class="service-card" data-category="ortho">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_veneer.png" alt="Diagnostic photographique dentaire" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Diagnostic</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 1 h</span>
+                        </div>
+                        <h3 class="service-title">Photographie & Diagnostic</h3>
+                        <p class="service-description">Protocole de prise de vue en haute définition pour le diagnostic clinique, la planification numérique du traitement (Digital Smile Design) et le suivi rigoureux des teintes et de l'intégration globale.</p>
+                        <div class="service-footer">
+                            <span class="service-price">800 MAD</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Photographie & Diagnostic">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Prothèses dentaires ALL on X -->
+                <div class="service-card" data-category="prosthesis">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_implants.png" alt="Prothèse complète implanto-portée" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Implantologie</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 1 h 20 min</span>
+                        </div>
+                        <h3 class="service-title">Prothèses dentaires ALL on X</h3>
+                        <p class="service-description">Réhabilitations implantaires complètes fixes (All-on-4, All-on-6). Armatures usinées en titane ou zircone avec connectiques d'une précision micrométrique. Allie robustesse structurelle et haute esthétique.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="All on X">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 7: CCM -->
+                <div class="service-card" data-category="prosthesis">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_zirconia.png" alt="Couronne céramo-métallique CCM" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Classique</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 72 h (Labo)</span>
+                        </div>
+                        <h3 class="service-title">CCM (Métallo-Céramique)</h3>
+                        <p class="service-description">La couronne coulée métallo-céramique traditionnelle. Combinaison idéale de la résistance mécanique du métal noble ou semi-noble et du rendu cosmétique de la céramique stratifiée.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="CCM">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 8: Prothèse amovible complète (PAT) -->
+                <div class="service-card" data-category="prosthesis">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_implants.png" alt="Prothèse amovible complète PAT" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Amovible</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 30 min (Clinique)</span>
+                        </div>
+                        <h3 class="service-title">Prothèse amovible complète (PAT)</h3>
+                        <p class="service-description">La prothèse amovible complète pour la réhabilitation fonctionnelle des patients édentés. Conception soignée, choix de dents en composite premium et travail minutieux de la fausse gencive esthétique.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="PAT">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 9: Emax stratifié -->
+                <div class="service-card" data-category="esthetic">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_veneer.png" alt="Céramique Emax stratifiée à la main" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Haute Couture</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> 72 h (Labo)</span>
+                        </div>
+                        <h3 class="service-title">Emax stratifié</h3>
+                        <p class="service-description">Le mariage parfait de la technologie IPS e.max pressée ou usinée et de l'artisanat. Stratification manuelle successive de masses céramiques pour reproduire les micro-détails, opalescences et reliefs anatomiques de la dent.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Emax stratifié">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 10: Orthodontie invisible -->
+                <div class="service-card" data-category="ortho">
+                    <div class="service-card-image-wrapper">
+                        <img src="assets/service_ortho.png" alt="Aligneur orthodontique invisible" class="service-card-img">
+                    </div>
+                    <div class="service-card-border"></div>
+                    <div class="service-card-content">
+                        <div class="service-meta">
+                            <span class="service-tag">Alignement</span>
+                            <span class="service-duration"><svg class="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Planification</span>
+                        </div>
+                        <h3 class="service-title">Orthodontie invisible</h3>
+                        <p class="service-description">Orthodontie avec gouttières transparentes de type Invisalign ou aligneurs actifs. Planification numérique complète en 3D (CleanCheck), simulation des déplacements et thermoformage de haute précision.</p>
+                        <div class="service-footer">
+                            <span class="service-price">Sur Devis</span>
+                            <button class="btn-card-action open-booking-modal" data-service="Orthodontie invisible">Réserver / Contacter</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- [NEW SECTION] Technologie (Flux Numérique) -->
+    <section id="technologie" class="tech-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Flux 100% Numérique</span>
+                <h2 class="section-title">La Révolution Digitale CAO/FAO</h2>
+                <div class="gold-divider"></div>
+                <p class="section-intro">Une précision microscopique pour des restaurations d'une justesse et d'une durabilité sans précédent.</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <span class="tech-step">01</span>
+                    <h3 class="tech-card-title">Scanner & Empreinte Optique</h3>
+                    <p class="tech-card-text">Nous réceptionnons et traitons instantanément vos fichiers STL, PLY ou OBJ issus de vos scanners intra-oraux (iTero, 3Shape, Medit), éliminant les imprécisions des empreintes physiques.</p>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-step">02</span>
+                    <h3 class="tech-card-title">Modélisation Virtuelle CAO</h3>
+                    <p class="tech-card-text">Nos prothésistes conçoivent virtuellement chaque couronne et facette sur Exocad ou 3Shape. Un ajustement parfait des limites cervicales et une morphologie occlusale ultra-précise.</p>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-step">03</span>
+                    <h3 class="tech-card-title">Usinage & Impression FAO</h3>
+                    <p class="tech-card-text">Grâce à nos usineuses robotisées 5 axes à eau et nos imprimantes 3D de précision médicale, les matériaux (zircone multicouche, disilicate de lithium, résines de haute technicité) prennent vie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [NEW SECTION] Galerie / Cas Cliniques -->
+    <section id="cas-cliniques" class="gallery-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Notre Portfolio</span>
+                <h2 class="section-title">Cas Cliniques & Réalisations Esthétiques</h2>
+                <div class="gold-divider"></div>
+                <p class="section-intro">Découvrez l'intégration naturelle et le niveau de détail de nos prothèses en bouche.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/service_veneer.png" alt="Réhabilitation Esthétique Facettes Emax">
+                        <div class="gallery-overlay">
+                            <span class="gallery-tag">Facettes Emax</span>
+                            <h4>Sourire antérieur sublimé</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/service_implants.png" alt="Bridge Complet Zircone sur Implants">
+                        <div class="gallery-overlay">
+                            <span class="gallery-tag">ALL on X</span>
+                            <h4>Bridge Complet Zircone Transvissé</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/service_zirconia.png" alt="Couronne Zircone Monolithique Postérieure">
+                        <div class="gallery-overlay">
+                            <span class="gallery-tag">Zircone</span>
+                            <h4>Couronnes monolithiques haute résistance</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/service_ortho.png" alt="Gouttière d'alignement transparent">
+                        <div class="gallery-overlay">
+                            <span class="gallery-tag">Aligneurs</span>
+                            <h4>Planification d'Orthodontie Invisible</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (Pourquoi nous choisir) -->
+    <section id="choisir" class="why-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Notre Différence</span>
+                <h2 class="section-title">Pourquoi collaborer avec ELWAFA DENTAL ?</h2>
+                <div class="gold-divider"></div>
+                <p class="section-intro">Une synergie parfaite entre savoir-faire artisanal et protocoles numériques.</p>
+            </div>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg viewBox="0 0 24 24" class="why-svg-icon"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="why-card-title">Expertise en dentisterie esthétique</h3>
+                    <p class="why-card-text">Une maîtrise absolue des teintes, du mimétisme tissulaire et de l'intégration en bouche pour des sourires d'un naturel parfait.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg viewBox="0 0 24 24" class="why-svg-icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="why-card-title">Solutions performantes</h3>
+                    <p class="why-card-text">Des protocoles optimisés et des flux de travail validés pour une pose rapide en cabinet sans retouches fastidieuses.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg viewBox="0 0 24 24" class="why-svg-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm14 10v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="why-card-title">Équipe expérimentée & passionnée</h3>
+                    <p class="why-card-text">Des techniciens d'art dentaire dévoués qui partagent l'amour du travail bien fait et le sens du détail clinique.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg viewBox="0 0 24 24" class="why-svg-icon"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    </div>
+                    <h3 class="why-card-title">Haute précision numérique</h3>
+                    <p class="why-card-text">Intégration d'un flux 100% numérique (fichiers STL, CAO/FAO) garantissant une justesse d'ajustement micrométrique.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg viewBox="0 0 24 24" class="why-svg-icon"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="why-card-title">Approche moderne & innovante</h3>
+                    <p class="why-card-text">Veille technologique permanente et utilisation de matériaux bio-compatibles innovants de dernière génération.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg viewBox="0 0 24 24" class="why-svg-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    </div>
+                    <h3 class="why-card-title">Accompagnement personnalisé</h3>
+                    <p class="why-card-text">Communication directe, réactive et fluide sur chaque cas clinique pour une véritable relation de partenariat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section (Formations) -->
+    <section id="formations" class="training-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Partage de Compétences</span>
+                <h2 class="section-title">Formations & Séminaires</h2>
+                <div class="gold-divider"></div>
+            </div>
+            
+            <div class="training-container">
+                <div class="training-card">
+                    <div class="training-status-badge finished">Session Terminée</div>
+                    <div class="training-content-wrapper">
+                        <div class="training-text">
+                            <span class="training-type">Formation Pratique Numérique</span>
+                            <h3 class="training-title">Cours de Design Dentaire (Exocad / 3Shape)</h3>
+                            <p class="training-desc">Apprenez les bases du design dentaire numérique. Une immersion totale pour maîtriser les outils CAO/FAO, la modélisation des couronnes anatomiques, des facettes et l'optimisation des flux de travail.</p>
+                            <ul class="training-highlights">
+                                <li><svg viewBox="0 0 24 24" class="icon-check"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Maîtrise des logiciels de CAO majeurs</li>
+                                <li><svg viewBox="0 0 24 24" class="icon-check"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Exercices pratiques sur cas cliniques réels</li>
+                                <li><svg viewBox="0 0 24 24" class="icon-check"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Accompagnement par des maîtres-prothésistes</li>
+                            </ul>
+                        </div>
+                        <div class="training-details-box">
+                            <div class="price-tag">
+                                <span class="price-label">Tarif de la session</span>
+                                <span class="price-value">5 000 MAD</span>
+                            </div>
+                            <div class="info-alert">
+                                <p>Cette session est complète. Vous pouvez vous inscrire sur la liste d'attente pour être informé en priorité de la prochaine session.</p>
+                            </div>
+                            <button class="btn btn-outline btn-full open-booking-modal" data-service="Liste d'attente - Formation Design Dentaire">S'inscrire sur la liste d'attente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Une Question ? Un Projet ?</span>
+                <h2 class="section-title">Entrons en Relation</h2>
+                <div class="gold-divider"></div>
+                <p class="section-intro">Notre équipe de techniciens est à votre écoute pour échanger sur vos cas cliniques et vos besoins.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h3 class="contact-box-title">Formulaire de Contact</h3>
+                    <form id="contactForm" class="premium-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formName">Nom complet / Cabinet</label>
+                                <input type="text" id="formName" name="name" required placeholder="Dr. Dupont / Cabinet Esthétique">
+                            </div>
+                            <div class="form-group">
+                                <label for="formPhone">Téléphone</label>
+                                <input type="tel" id="formPhone" name="phone" required placeholder="06 00 00 00 00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="formEmail">Email</label>
+                            <input type="email" id="formEmail" name="email" required placeholder="contact@cabinet.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="formSubject">Sujet</label>
+                            <select id="formSubject" name="subject">
+                                <option value="collaboration">Collaboration régulière</option>
+                                <option value="devis">Demande de devis / Cas clinique</option>
+                                <option value="formation">Information formation</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formMessage">Votre Message</label>
+                            <textarea id="formMessage" name="message" rows="5" required placeholder="Décrivez votre besoin ou votre cas clinique..."></textarea>
+                        </div>
+                        <div class="form-status" id="formStatus"></div>
+                        <button type="submit" class="btn btn-gold btn-full">Envoyer le message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & Details -->
+                <div class="contact-info-container">
+                    <h3 class="contact-box-title">Coordonnées du Laboratoire</h3>
+                    <div class="info-list">
+                        <!-- Address -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                            </div>
+                            <div class="info-text">
+                                <h4>Adresse</h4>
+                                <p>Lot ayour N° 237 azzouzia, Marrakech</p>
+                            </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                            </div>
+                            <div class="info-text">
+                                <h4>Téléphone</h4>
+                                <p><a href="tel:0665042005" class="hover-underline">06 65 04 20 05</a></p>
+                            </div>
+                        </div>
+                        <!-- Hours -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                            </div>
+                            <div class="info-text">
+                                <h4>Horaires d'ouverture</h4>
+                                <p>Lundi à Vendredi : 08:00 – 20:00</p>
+                                <p class="text-muted">Samedi & Dimanche : Fermé</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instant Communication Actions -->
+                    <div class="communication-actions">
+                        <a href="tel:0665042005" class="btn btn-outline btn-full comm-btn">
+                            <svg viewBox="0 0 24 24" class="btn-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                            Appel direct
+                        </a>
+                        <a href="https://wa.me/212665042005" target="_blank" rel="noopener" class="btn btn-whatsapp btn-full comm-btn">
+                            <svg viewBox="0 0 24 24" class="btn-icon" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.115-2.903-6.99C16.262 1.876 13.79 .843 11.15.843 5.717.843 1.293 5.263 1.289 10.7c-.001 1.699.444 3.356 1.29 4.793l-.999 3.647 3.738-.98c1.396.761 2.923 1.162 4.47 1.162l.004-.002zm11.332-7.75c-.301-.15-1.782-.88-2.06-.98-.277-.101-.48-.15-.68.15-.2.3-.777.98-.953 1.18-.177.2-.354.226-.655.076-.301-.15-1.272-.469-2.423-1.496-.895-.798-1.5-1.784-1.276-2.16.177-.3.076-.462-.075-.612-.136-.135-.301-.35-.452-.525-.15-.176-.2-.3-.3-.5-.1-.2-.05-.376.025-.526.076-.15.68-.88.753-1.03.075-.15.1-.3.05-.452-.05-.15-.48-1.155-.66-1.585-.175-.422-.37-.363-.508-.37h-.433c-.15 0-.393.056-.6.282-.206.226-.787.77-.787 1.88s.81 2.185.923 2.336c.114.15 1.594 2.434 3.861 3.41 2.266.977 2.266.652 2.67.615.405-.038 1.782-.728 2.035-1.43.253-.703.253-1.306.177-1.43-.076-.124-.277-.2-.578-.35z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Wrapper -->
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.9620401815197!2d-8.048288523788324!3d31.658097974151283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafec06859595d5%3A0xe54e60df0a424e8!2sAzzouzia%2C%20Marrakech!5e0!3m2!1sfr!2sma!4v1719665042005!5m2!1sfr!2sma" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade" 
+                    title="Carte de localisation ELWAFA DENTAL Azzouzia Marrakech">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Modal (Prise de rendez-vous) -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Fermer la fenêtre">&times;</button>
+            <h3 class="modal-title">Prendre Rendez-vous / Demande de Cas</h3>
+            <p class="modal-intro">Formulaire réservé aux praticiens et cabinets dentaires pour planifier une prise en charge ou demander un retrait de cas.</p>
+            
+            <form id="bookingForm" class="premium-form">
+                <div class="form-group">
+                    <label for="bookCabinet">Nom du Cabinet / Praticien</label>
+                    <input type="text" id="bookCabinet" name="cabinet" required placeholder="Dr. Mehdi Bennani">
+                </div>
+                <div class="form-group">
+                    <label for="bookPhone">Numéro de Téléphone (WhatsApp direct)</label>
+                    <input type="tel" id="bookPhone" name="phone" required placeholder="06 65 04 20 05">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookService">Prestation requise</label>
+                        <select id="bookService" name="service">
+                            <option value="facette_feldspathique">Facette feldspathique</option>
+                            <option value="facette_lithium">Facette disilicate de lithium</option>
+                            <option value="zirconium">Zirconium</option>
+                            <option value="blanchiment">Kit blanchiment dentaire</option>
+                            <option value="photographie">Photographie & Diagnostic</option>
+                            <option value="all_on_x">Prothèses ALL on X</option>
+                            <option value="ccm">CCM (Métallo-Céramique)</option>
+                            <option value="pat">Prothèse amovible (PAT)</option>
+                            <option value="emax_stratifie">Emax stratifié</option>
+                            <option value="orthodontie_invisible">Orthodontie invisible</option>
+                            <option value="formation">Inscription liste d'attente Formation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDate">Date souhaitée de retrait/RDV</label>
+                        <input type="date" id="bookDate" name="date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bookNote">Remarques ou instructions cliniques (Teinte, détails, etc.)</label>
+                    <textarea id="bookNote" name="note" rows="3" placeholder="Ex: Teinte A2 demandée, retrait de l'empreinte au cabinet..."></textarea>
+                </div>
+                <div class="form-status" id="bookingStatus"></div>
+                <button type="submit" class="btn btn-gold btn-full">Confirmer la demande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/212665042005" class="whatsapp-floating" target="_blank" rel="noopener" aria-label="Discuter avec nous sur WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="30" height="30"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.115-2.903-6.99C16.262 1.876 13.79 .843 11.15.843 5.717.843 1.293 5.263 1.289 10.7c-.001 1.699.444 3.356 1.29 4.793l-.999 3.647 3.738-.98c1.396.761 2.923 1.162 4.47 1.162l.004-.002zm11.332-7.75c-.301-.15-1.782-.88-2.06-.98-.277-.101-.48-.15-.68.15-.2.3-.777.98-.953 1.18-.177.2-.354.226-.655.076-.301-.15-1.272-.469-2.423-1.496-.895-.798-1.5-1.784-1.276-2.16.177-.3.076-.462-.075-.612-.136-.135-.301-.35-.452-.525-.15-.176-.2-.3-.3-.5-.1-.2-.05-.376.025-.526.076-.15.68-.88.753-1.03.075-.15.1-.3.05-.452-.05-.15-.48-1.155-.66-1.585-.175-.422-.37-.363-.508-.37h-.433c-.15 0-.393.056-.6.282-.206.226-.787.77-.787 1.88s.81 2.185.923 2.336c.114.15 1.594 2.434 3.861 3.41 2.266.977 2.266.652 2.67.615.405-.038 1.782-.728 2.035-1.43.253-.703.253-1.306.177-1.43-.076-.124-.277-.2-.578-.35z"/></svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container container">
+            <div class="footer-brand-column">
+                <a href="#accueil" class="logo footer-logo" aria-label="ELWAFA DENTAL Accueil">
+                    <img src="assets/logo.png" alt="DENTAL PLUS" class="logo-img">
+                </a>
+                <p class="footer-desc">Laboratoire dentaire de référence à Marrakech, dédié à la dentisterie esthétique et aux solutions prothétiques de haute technologie.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/elwafadental" target="_blank" rel="noopener" aria-label="Instagram ELWAFA DENTAL">
+                        <svg viewBox="0 0 24 24" class="social-icon"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/elwafadental" target="_blank" rel="noopener" aria-label="LinkedIn ELWAFA DENTAL">
+                        <svg viewBox="0 0 24 24" class="social-icon"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#technologie">Technologie</a></li>
+                    <li><a href="#cas-cliniques">Cas Cliniques</a></li>
+                    <li><a href="#choisir">Pourquoi nous</a></li>
+                    <li><a href="#formations">Formations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-column">
+                <h4>Coordonnées</h4>
+                <p>Lot ayour N° 237 azzouzia, Marrakech</p>
+                <p>Tél : <a href="tel:0665042005" class="hover-underline">06 65 04 20 05</a></p>
+                <p>Email : <a href="mailto:contact@elwafadental.com" class="hover-underline">contact@elwafadental.com</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom container">
+            <p>&copy; 2026 ELWAFA DENTAL. Tous droits réservés. Spécialiste prothèses dentaires Marrakech.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
