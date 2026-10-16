@@ -1,71 +1,71 @@
-# Mahdi Créations — Agence Web Marrakech
+# Mahdi Créations — Agence Web Marrakech (Astro + Tailwind CSS)
 
 Ce projet est le code source officiel du site vitrine de **Mahdi Créations**, agence web et marketing digital basée à Marrakech, Maroc.
 
-Le site a été entièrement refactoré depuis Next.js/React vers une architecture **Static HTML5, Tailwind CSS, et Vanilla JavaScript** ultra-performante. Cette approche supprime l'overhead de React, garantit un temps de chargement instantané (idéal pour le SEO Google), et permet un hébergement très simple sur n'importe quel serveur web (Apache, Nginx, ou CDN).
+Le site utilise **Astro**, l'architecture moderne la plus rapide pour les sites de contenu (Zero JS par défaut), couplé à **Tailwind CSS v3** et un backend de contact en **PHP natif**.
 
 ## Technologies Utilisées
 
-*   **HTML5 / Vanilla JavaScript :** Aucune librairie frontend lourde. Le code JS est réduit au strict nécessaire (`main.js`).
-*   **Tailwind CSS (v3) :** Génération du design system complet via CLI avec minification.
-*   **Node.js Build Script :** Un générateur statique sur mesure (`build.js`) qui compile les données JSON/JS en pages HTML statiques.
-*   **PHP (Backend) :** Le formulaire de contact utilise un script léger en PHP natif (`contact.php`) via l'API SMTP de Brevo, sans dépendance Composer.
+* **Astro (v7 Static) :** Architecture Islands / Static Site Generator ultra-performant. Score Google PageSpeed 100/100 garanti.
+* **Tailwind CSS (v3) :** Design system complet et responsive avec polices auto-hébergées.
+* **Vanilla JavaScript :** Code client minifié (`main.min.js`) pour les animations, menu mobile, accordéon FAQ et filtres.
+* **PHP (Backend) :** Formulaire de contact sécurisé (`contact/send-mail.php`) utilisant le serveur SMTP Hostinger (`smtp.hostinger.com`).
+* **Support Multilingue :** Français (`/`), Arabe avec RTL (`/ar/`), Anglais (`/en/`).
+* **SEO Complet :** Balises OpenGraph, Twitter Cards, balises hreflang automatiques, JSON-LD Schema.org, Sitemap XML et Robots.txt.
 
 ## Structure du Projet
 
 ```text
 mahdicreation/
-├── src/                      # Source files
-│   ├── data/                 # Content data (Blog, Portfolio, Site config)
-│   │   ├── blog.js
-│   │   ├── projects.js
-│   │   └── site.js
-│   ├── input.css             # Tailwind source CSS (design tokens)
-│   └── tailwind.config.js    # Tailwind configuration
-├── public/                   # Static assets copied directly to dist/
-│   └── images/               # Logos, photos, icons
-├── dist/                     # THE PRODUCTION BUILD OUTPUT (Upload this folder)
-├── build.js                  # The Node.js static site generator
-└── package.json              # NPM scripts
+├── src/
+│   ├── layouts/
+│   │   └── BaseLayout.astro      # Layout global (SEO, Meta, Fonts, Analytics, Hreflang)
+│   ├── pages/                   # 57 routes statiques (FR, AR, EN)
+│   │   ├── index.astro
+│   │   ├── 404.astro
+│   │   ├── a-propos/
+│   │   ├── services/
+│   │   ├── blog/
+│   │   ├── realisations/
+│   │   ├── contact/
+│   │   ├── ar/                  # Pages en arabe (RTL)
+│   │   └── en/                  # Pages en anglais
+│   └── styles/
+│       └── global.css           # Tailwind + Custom Design System
+├── public/                      # Fichiers statiques copiés tels quels dans dist/
+│   ├── assets/                  # Images WebP, polices WOFF2, JS
+│   ├── contact/send-mail.php    # Endpoint PHP SMTP Hostinger
+│   ├── .htaccess                # Configuration Apache (Clean URLs, Gzip, Cache)
+│   ├── sitemap.xml
+│   ├── robots.txt
+│   └── favicon.ico
+├── dist/                        # Dossier généré pour la production (Hostinger public_html)
+├── astro.config.mjs             # Configuration Astro
+├── tailwind.config.js           # Configuration Tailwind
+└── package.json                 # Scripts NPM
 ```
 
-## Développement & Compilation
+## Commandes de Développement
 
-Le projet utilise Node.js uniquement pour générer les fichiers HTML et compiler le CSS.
-
-1. **Installation des dépendances (Tailwind CLI)**
+1. **Lancer le serveur de développement :**
    ```bash
-   npm install
+   npm run dev
    ```
+   Accessible sur `http://localhost:4000/`.
 
-2. **Compiler le projet (HTML + CSS)**
-   Ceci exécute le script `build.js` et lance Tailwind CSS pour minifier la feuille de style.
+2. **Compiler pour la production (Hostinger) :**
    ```bash
    npm run build
    ```
+   Cette commande génère le dossier `/dist` complet et prêt à être déployé sur **Hostinger `public_html`**.
 
-3. **Prévisualiser le site localement**
-   Lance un serveur web local sur le port 4000 pour visualiser le dossier `/dist`.
+3. **Prévisualiser le build de production :**
    ```bash
-   npm run serve
+   npm run preview
    ```
 
-## Déploiement (Production)
+## Déploiement sur Hostinger
 
-Le déploiement est extrêmement simple.
-
-1. Exécutez `npm run build` pour générer la version finale dans le dossier `/dist`.
-2. Envoyez **le contenu** du dossier `/dist` sur votre serveur web (via FTP, cPanel, ou SSH) dans le répertoire `public_html` ou `www`.
-3. Le fichier `.htaccess` est automatiquement généré pour gérer les URLs propres (retrait de l'extension `.html`), la redirection WWW/HTTPS, et le cache navigateur.
-
-### Configuration du Formulaire de Contact
-
-Le formulaire de contact fonctionne via le fichier `contact/send-mail.php`. Il utilise le serveur SMTP de Hostinger (`smtp.hostinger.com` sur le port 465 SSL).
-Les identifiants SMTP peuvent être modifiés directement au début du fichier `contact/send-mail.php`.
-
-## Édition du Contenu
-
-*   **Pages de Base :** Les textes des pages Accueil, Services, etc. se trouvent dans les fonctions correspondantes à l'intérieur du fichier `build.js` (ex: `generateHomePage()`).
-*   **Blog :** Pour ajouter un article de blog, modifiez l'array `blogArticles` dans `src/data/blog.js`.
-*   **Portfolio :** Pour ajouter une réalisation, modifiez `src/data/projects.js`.
-*   **Menu & Réglages Généraux :** Modifiez `src/data/site.js` pour les liens, logos partenaires, téléphone, et email.
+1. Exécutez `npm run build`.
+2. Envoyez le contenu du dossier `/dist` dans le dossier `public_html` de votre hébergement Hostinger (via Git, FTP ou File Manager).
+3. Le fichier `.htaccess` gère automatiquement la redirection HTTPS, les URLs propres (sans extension), et le cache navigateur.

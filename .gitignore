@@ -5,6 +5,7 @@
 # Note: For many static site hosts (Netlify, Vercel, Cloudflare), you commit the source,
 # and they run `npm run build` which generates /dist. So /dist is usually ignored.
 /dist/
+/.astro/
 
 # misc
 .DS_Store

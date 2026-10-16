@@ -1,0 +1,129 @@
+# Mahdi Créations — Apache Configuration
+# Primary Domain: https://mahdicreations.dev
+# Clean URLs + Canonical 301 Redirects + Gzip + Caching
+
+Options -Indexes
+ServerSignature Off
+
+# ── Rewrite Engine ──
+RewriteEngine On
+RewriteBase /
+
+# ── 1. Permanent Redirect for .ma (if traffic reaches this host) ──
+RewriteCond %{HTTP_HOST} ^(www\.)?mahdicreations\.ma$ [NC]
+RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
+
+# ── 2. Canonical Host: Redirect www to non-www (mahdicreations.dev) ──
+RewriteCond %{HTTP_HOST} ^www\.mahdicreations\.dev$ [NC]
+RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
+
+# ── 3. Force HTTPS on mahdicreations.dev ──
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^mahdicreations\.dev$ [NC]
+RewriteRule ^(.*)$ https://mahdicreations.dev/$1 [R=301,L]
+
+# ── 4. 301 Redirects (Legacy Service URLs - No Trailing Slash Policy) ──
+RewriteRule ^creation-site-web/?$ /services/creation-web/ [R=301,L]
+RewriteRule ^referencement-seo/?$ /services/seo/ [R=301,L]
+RewriteRule ^marketing-digital/?$ /services/marketing/ [R=301,L]
+RewriteRule ^blog/services/marketing-riads-hotels-maroc/?$ /blog/marketing-digital-riads-hotels-maroc/ [R=301,L]
+
+# ── 5. Consistent Trailing-Slash Policy (Enforce Trailing Slash on URLs) ──
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+# ── 6. Clean URLs: Serve index.html for extensionless directory paths ──
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.
+RewriteRule ^(.*)$ /$1/index.html [L]
+
+# ── Custom Error Pages ──
+ErrorDocument 404 /404.html
+
+# ── Brotli & Gzip Compression ──
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml
+</IfModule>
+
+# ── Identify Versioned Assets for Immutable Caching ──
+<IfModule mod_rewrite.c>
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:v|ver)= [NC]
+  RewriteRule \.(?:css|js)$ - [E=IS_VERSIONED:1]
+</IfModule>
+
+# ── Browser Caching ──
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML & Dynamic Pages - no cache (always fresh)
+  ExpiresByType text/html "access plus 0 seconds"
+  # CSS & JS - 1 year
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  # Images - 1 year
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  # Fonts - 1 year
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+</IfModule>
+
+# ── Cache-Control & Compression Headers ──
+<IfModule mod_headers.c>
+  # Compression negotiation header
+  <FilesMatch "\.(html|htm|txt|xml|css|js|json|svg)$">
+    Header append Vary Accept-Encoding
+  </FilesMatch>
+
+  # HTML documents - CDN & edge friendly cache with short s-maxage and client revalidation
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "public, max-age=0, s-maxage=600, must-revalidate"
+  </FilesMatch>
+
+  # Unversioned CSS & JS - short revalidation cache
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # Versioned CSS & JS - long immutable cache (1 year)
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable" env=IS_VERSIONED
+  </FilesMatch>
+
+  # Web fonts - immutable assets (1 year)
+  <FilesMatch "\.(woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Static images - immutable assets (1 year)
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Form endpoints and PHP scripts - never cache
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+  # Security headers
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://embed.tawk.to https://*.tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.tawk.to; font-src 'self' data: https://fonts.gstatic.com https://*.tawk.to; img-src 'self' data: https://www.google-analytics.com https://*.tawk.to https://tawk.link; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net https://*.tawk.to wss://*.tawk.to; frame-src 'self' https://embed.tawk.to https://*.tawk.to; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+</IfModule>
+
+# ── PHP API CORS ──
+<FilesMatch "\.php$">
+  Header set Access-Control-Allow-Origin "https://mahdicreations.dev"
+</FilesMatch>

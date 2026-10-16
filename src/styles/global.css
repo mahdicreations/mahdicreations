@@ -1,0 +1,683 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Self-Hosted Fonts (WOFF2 with font-display: swap) ── */
+/* Cormorant Garamond - Latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Cormorant Garamond - Latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Cormorant Garamond - Discrete Weights */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/cormorant-garamond-latin.woff2') format('woff2');
+}
+
+/* Inter - Latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter - Latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter - Discrete Weights */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/inter-latin.woff2') format('woff2');
+}
+
+/* ── Self-Hosted Arabic Fonts (IBM Plex Sans Arabic & Readex Pro) ── */
+/* IBM Plex Sans Arabic - 400 */
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-arabic-400.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* IBM Plex Sans Arabic - 500 */
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-arabic-500.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* IBM Plex Sans Arabic - 600 */
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-arabic-600.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* IBM Plex Sans Arabic - 700 */
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-arabic-700.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/ibm-plex-sans-arabic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Readex Pro - 700 */
+@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/readex-pro-arabic-700.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/readex-pro-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── CSS Custom Properties ── */
+:root {
+  --color-gold-light: #f0d080;
+  --color-gold: #c9960c;
+  --color-gold-mid: #b8860b;
+  --color-gold-deep: #8b6914;
+  --color-gold-accent: #d4a017;
+  --color-dark: #0a0a0a;
+  --color-dark-section: #111111;
+  --color-dark-card: #181818;
+  --color-cream: #f8f6f1;
+  --color-text-white: #f5f4f0;
+  --color-text-muted: #a09880;
+  --color-text-dark: #1a1a1a;
+  --background: #0a0a0a;
+  --foreground: #f5f4f0;
+}
+
+/* ── Base Reset ── */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex-grow: 1;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-dark);
+}
+
+/* ── RTL Bidi Isolation ── */
+[dir="rtl"] bdi {
+  unicode-bidi: isolate;
+}
+
+/* ── Accessibility & Focus States ── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  left: 1rem;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -5px rgba(201, 150, 12, 0.4);
+}
+
+/* ── Gold Gradient Text ── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f0d080 0%, #c9960c 50%, #8b6914 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gold Gradient Background ── */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #f0d080 0%, #c9960c 35%, #b8860b 65%, #8b6914 100%);
+}
+
+/* ── Noise Overlay ── */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Gold Glow Hover ── */
+.gold-glow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gold-glow-hover:hover {
+  box-shadow: 0 0 30px rgba(201, 150, 12, 0.12);
+  border-color: rgba(201, 150, 12, 0.4);
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #c9960c; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #b8860b; }
+
+/* ── Marquee ── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+
+/* ── No Scrollbar ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Scroll Reveal Animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero Sections (Always Visible Immediately, Zero Layout Shift) ── */
+section:first-of-type h1,
+section:first-of-type .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* ── Hero Slideshow ── */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.hero-slide.active {
+  opacity: 0.35;
+}
+.hero-slide-1 {
+  background-image: url('/assets/images/hero-bg-1-480.webp');
+}
+@media (min-width: 640px) {
+  .hero-slide-1 {
+    background-image: url('/assets/images/hero-bg-1-768.webp');
+  }
+}
+@media (min-width: 1024px) {
+  .hero-slide-1 {
+    background-image: url('/assets/images/hero-bg-1.webp');
+  }
+}
+
+
+/* ── Focus Visible ── */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Portfolio Filter Card Animation ── */
+.project-card {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.project-card.hidden-card {
+  display: none;
+}
+
+/* ── FAQ Accordion ── */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+}
+.faq-answer.open {
+  max-height: 500px;
+}
+.faq-chevron {
+  transition: transform 0.3s ease;
+}
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Scroll to Top Button ── */
+#scroll-top {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Form States ── */
+.form-input {
+  background-color: var(--color-dark);
+  border: 1px solid rgba(201, 150, 12, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-white);
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 1px var(--color-gold);
+}
+.form-input.error {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+.form-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 1px #ef4444;
+}
+.form-error-msg {
+  font-size: 0.75rem;
+  color: #f87171;
+  margin-top: 0.25rem;
+}
+.form-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ── Header ── */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all 0.3s ease;
+  background-color: var(--color-dark);
+  border-bottom: 1px solid rgba(201, 150, 12, 0.1);
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+#site-header.scrolled {
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: rgba(201, 150, 12, 0.15);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* ── Mobile Nav Drawer ── */
+#mobile-nav {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.35s;
+  opacity: 0;
+}
+#mobile-nav.open {
+  max-height: 800px;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ── Callback form (light background context) ── */
+.form-input-light {
+  background-color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(10,10,10,0.15);
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem 0.625rem 2.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-input-light:focus {
+  outline: none;
+  border-color: var(--color-dark);
+  box-shadow: 0 0 0 1px var(--color-dark);
+  background-color: white;
+}
+
+/* ── Blog content rich text ── */
+.blog-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text-white);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.blog-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-text-white);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.blog-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+.blog-content strong {
+  color: var(--color-text-white);
+  font-weight: 600;
+}
+.blog-content img {
+  width: 100%;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  object-fit: cover;
+  height: 320px;
+}
+
+/* ── RTL Arabic Typography (Tech & Modern UI) ── */
+[dir="rtl"], html[lang="ar"] {
+  letter-spacing: normal !important;
+  word-spacing: 0.08em;
+}
+
+/* Base Body: IBM Plex Sans Arabic (400) */
+[dir="rtl"] body, html[lang="ar"] body {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.8;
+  word-spacing: 0.08em;
+}
+
+/* Normal Texts, Body, Paragraphs, Lists, Spans: IBM Plex Sans Arabic (400) */
+[dir="rtl"] .font-body, html[lang="ar"] .font-body,
+[dir="rtl"] p, html[lang="ar"] p,
+[dir="rtl"] li, html[lang="ar"] li,
+[dir="rtl"] small, html[lang="ar"] small,
+[dir="rtl"] blockquote, html[lang="ar"] blockquote,
+[dir="rtl"] span:not(button span):not(.btn span):not(h1 span):not(h2 span):not(h3 span):not(h4 span),
+html[lang="ar"] span:not(button span):not(.btn span):not(h1 span):not(h2 span):not(h3 span):not(h4 span) {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+}
+
+/* Paragraphs & Article Content with line-height: 1.8 */
+[dir="rtl"] p, html[lang="ar"] p,
+[dir="rtl"] .blog-content p, html[lang="ar"] .blog-content p {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.8 !important;
+  word-spacing: 0.08em;
+}
+
+/* Strong / Bold inline text */
+[dir="rtl"] strong, html[lang="ar"] strong,
+[dir="rtl"] b, html[lang="ar"] b,
+[dir="rtl"] p strong, html[lang="ar"] p strong,
+[dir="rtl"] .blog-content p strong, html[lang="ar"] .blog-content p strong {
+  font-weight: 700;
+}
+
+/* Dark Blog Content Colors */
+[dir="rtl"] .blog-content p, html[lang="ar"] .blog-content p {
+  color: var(--color-text-muted);
+}
+[dir="rtl"] .blog-content strong, html[lang="ar"] .blog-content strong,
+[dir="rtl"] .blog-content p strong, html[lang="ar"] .blog-content p strong {
+  color: var(--color-text-white);
+}
+
+/* ── Light Sections (bg-cream) & White Cards Text Contrast ── */
+[dir="rtl"] .bg-cream, html[lang="ar"] .bg-cream {
+  color: var(--color-dark);
+}
+[dir="rtl"] .bg-cream p, html[lang="ar"] .bg-cream p,
+[dir="rtl"] .bg-cream .bg-white p, html[lang="ar"] .bg-cream .bg-white p {
+  color: rgba(10, 10, 10, 0.75) !important;
+}
+[dir="rtl"] .bg-cream .text-dark\/80, html[lang="ar"] .bg-cream .text-dark\/80 {
+  color: rgba(10, 10, 10, 0.85) !important;
+}
+[dir="rtl"] .bg-cream strong, html[lang="ar"] .bg-cream strong,
+[dir="rtl"] .bg-cream b, html[lang="ar"] .bg-cream b,
+[dir="rtl"] .bg-cream .bg-white strong, html[lang="ar"] .bg-cream .bg-white strong {
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+}
+
+/* ── Section Eyebrow Labels (خدماتنا، رؤيتنا، أعمالنا، رواد في المجال الرقمي، إلخ) ── */
+[dir="rtl"] span.uppercase, html[lang="ar"] span.uppercase,
+[dir="rtl"] p.uppercase, html[lang="ar"] p.uppercase,
+[dir="rtl"] .section-badge, html[lang="ar"] .section-badge {
+  font-size: 1.05rem !important; /* ~17px - واضحة وكبيرة وبارزة */
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.5 !important;
+  display: inline-block;
+}
+
+[dir="rtl"] .bg-cream span.uppercase, html[lang="ar"] .bg-cream span.uppercase {
+  color: var(--color-gold-deep) !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+}
+
+/* Nav Links: IBM Plex Sans Arabic (Bold - 700) */
+[dir="rtl"] nav a, html[lang="ar"] nav a,
+[dir="rtl"] #mobile-nav a, html[lang="ar"] #mobile-nav a,
+[dir="rtl"] header a[data-nav-link], html[lang="ar"] header a[data-nav-link] {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.06em;
+}
+
+/* Buttons & CTAs: IBM Plex Sans Arabic (500) */
+[dir="rtl"] button, html[lang="ar"] button,
+[dir="rtl"] .btn, html[lang="ar"] .btn,
+[dir="rtl"] a.rounded-full, html[lang="ar"] a.rounded-full {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.06em;
+}
+
+/* Form Controls: IBM Plex Sans Arabic */
+[dir="rtl"] .form-input, [dir="rtl"] .form-label,
+html[lang="ar"] .form-input, html[lang="ar"] .form-label,
+[dir="rtl"] input, html[lang="ar"] input,
+[dir="rtl"] textarea, html[lang="ar"] textarea,
+[dir="rtl"] select, html[lang="ar"] select {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+[dir="rtl"] .form-label, html[lang="ar"] .form-label {
+  font-weight: 500 !important;
+}
+
+/* ── Headings (H1, H2, H3, H4, H5, H6, .font-display): Readex Pro (700) ALWAYS ── */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] h5, html[lang="ar"] h6,
+[dir="rtl"] .font-display, html[lang="ar"] .font-display,
+[dir="rtl"] .blog-content h2, [dir="rtl"] .blog-content h3, [dir="rtl"] .blog-content h4,
+html[lang="ar"] .blog-content h2, html[lang="ar"] .blog-content h3, html[lang="ar"] .blog-content h4,
+html[lang="ar"] h1.font-semibold, html[lang="ar"] h2.font-semibold, html[lang="ar"] h3.font-semibold {
+  font-family: 'Readex Pro', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.06em;
+  line-height: 1.35;
+}
+
+
+
+
+

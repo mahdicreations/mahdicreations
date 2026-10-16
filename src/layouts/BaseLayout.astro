@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  lang?: 'fr' | 'ar' | 'en';
+  dir?: 'ltr' | 'rtl';
+  ogType?: string;
+  ogImage?: string;
+  currentPath?: string;
+  robots?: string;
+  schemaHtml?: string;
+  noCanonical?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  lang = 'fr',
+  dir = lang === 'ar' ? 'rtl' : 'ltr',
+  ogType = 'website',
+  ogImage = 'https://mahdicreations.dev/assets/images/og-image.png',
+  currentPath = '/',
+  robots = 'index, follow',
+  schemaHtml,
+  noCanonical = false,
+} = Astro.props;
+
+// Determine clean path without language prefix for alternates
+let cleanPath = currentPath;
+if (cleanPath.startsWith('/ar/')) {
+  cleanPath = cleanPath.slice(3);
+} else if (cleanPath === '/ar') {
+  cleanPath = '/';
+} else if (cleanPath.startsWith('/en/')) {
+  cleanPath = cleanPath.slice(3);
+} else if (cleanPath === '/en') {
+  cleanPath = '/';
+}
+if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+if (!cleanPath.endsWith('/') && !cleanPath.includes('.')) cleanPath += '/';
+
+const frUrl = `https://mahdicreations.dev${cleanPath}`;
+const enUrl = `https://mahdicreations.dev/en${cleanPath === '/' ? '/' : cleanPath}`;
+const arUrl = `https://mahdicreations.dev/ar${cleanPath === '/' ? '/' : cleanPath}`;
+const canonicalUrl = canonical || (lang === 'fr' ? frUrl : (lang === 'en' ? enUrl : arUrl));
+---
+
+<!DOCTYPE html>
+<html class="scroll-smooth" dir={dir} lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>{title}</title>
+  <meta content={description} name="description" />
+  {!noCanonical && (
+    <>
+      <link href={canonicalUrl} rel="canonical" />
+      <link href={frUrl} hreflang="x-default" rel="alternate" />
+      <link href={frUrl} hreflang="fr" rel="alternate" />
+      <link href={enUrl} hreflang="en" rel="alternate" />
+      <link href={arUrl} hreflang="ar" rel="alternate" />
+    </>
+  )}
+  <meta content={robots} name="robots" />
+  <link href="/favicon.ico" rel="icon" sizes="any" />
+  <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+  <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+  <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+  <!-- Open Graph -->
+  <meta content={title} property="og:title" />
+  <meta content={description} property="og:description" />
+  {!noCanonical && <meta content={canonicalUrl} property="og:url" />}
+  <meta content={ogType} property="og:type" />
+  <meta content={ogImage} property="og:image" />
+  <meta content="1200" property="og:image:width" />
+  <meta content="630" property="og:image:height" />
+  <meta content={lang === 'ar' ? 'ar_MA' : (lang === 'en' ? 'en_US' : 'fr_MA')} property="og:locale" />
+  {lang === 'fr' && (
+    <>
+      <meta content="en_US" property="og:locale:alternate" />
+      <meta content="ar_MA" property="og:locale:alternate" />
+    </>
+  )}
+  {lang === 'en' && (
+    <>
+      <meta content="fr_MA" property="og:locale:alternate" />
+      <meta content="ar_MA" property="og:locale:alternate" />
+    </>
+  )}
+  {lang === 'ar' && (
+    <>
+      <meta content="fr_MA" property="og:locale:alternate" />
+      <meta content="en_US" property="og:locale:alternate" />
+    </>
+  )}
+  <meta content="Mahdi Créations" property="og:site_name" />
+  <!-- Twitter Card -->
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta content={title} name="twitter:title" />
+  <meta content={description} name="twitter:description" />
+  <meta content={ogImage} name="twitter:image" />
+  <!-- Fonts: Preload -->
+  {lang === 'ar' ? (
+    <>
+      <link as="font" crossorigin="" href="/assets/fonts/ibm-plex-sans-arabic-arabic-400.woff2" rel="preload" type="font/woff2" />
+      <link as="font" crossorigin="" href="/assets/fonts/readex-pro-arabic-700.woff2" rel="preload" type="font/woff2" />
+    </>
+  ) : (
+    <>
+      <link as="font" crossorigin="" href="/assets/fonts/inter-latin.woff2" rel="preload" type="font/woff2" />
+      <link as="font" crossorigin="" href="/assets/fonts/cormorant-garamond-latin.woff2" rel="preload" type="font/woff2" />
+    </>
+  )}
+  <!-- Google Analytics -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EY4LVT535S');
+
+    function loadGtag() {
+      if (window._gtagLoaded) return;
+      window._gtagLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EY4LVT535S';
+      document.head.appendChild(s);
+    }
+
+    function scheduleGtag() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtag, { timeout: 2000 });
+      } else {
+        setTimeout(loadGtag, 1000);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      scheduleGtag();
+    } else {
+      window.addEventListener('load', scheduleGtag, { once: true });
+    }
+  </script>
+  {schemaHtml && <Fragment set:html={schemaHtml} />}
+  <slot name="schema" />
+</head>
+<body class="min-h-full flex flex-col bg-dark text-text-white font-body selection:bg-gold selection:text-dark">
+  <slot />
+  <script is:inline src="/assets/js/main.min.js"></script>
+</body>
+</html>

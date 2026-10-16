@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <g transform="translate(4, 8)">
+    <path fill="#339933" d="M12 1.5L2.25 7.15v11.3L12 24.1l9.75-5.65v-11.3L12 1.5zm8.25 16.08l-8.25 4.77-8.25-4.77V7.98l8.25-4.77 8.25 4.77v9.6z"/>
+    <path fill="#339933" d="M12 6.5l-5.2 3v6l5.2 3 5.2-3v-6l-5.2-3zm3.7 7.64l-3.7 2.14-3.7-2.14V11.2l3.7-2.14 3.7 2.14v2.94z"/>
+  </g>
+  <text x="34" y="25" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="0.5">Node.js</text>
+</svg>
